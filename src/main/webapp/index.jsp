@@ -74,7 +74,7 @@
 	UserBase u=DataConnector.getRecordById(rollNumber);  
 	%>
     <div>
-      <a href="Aboutus.jsp">
+      <a href="${pageContext.request.contextPath}/Aboutus.jsp">
       <button class="btn btn-warning btn-lg" style="margin: 15px;"></a>
         Go Back
       </button>
@@ -96,7 +96,7 @@
         </hr><br>
         <div class="panel panel-default">
           <div class="panel-heading">Website/ Social media/ Linkedin </div>
-          <div class="panel-body"><a href="https://www.linkedin.com/in/akash-g/"> <%=u.getFirstName()%>'s profile</a></div>
+          <div class="panel-body"><a href="${pageContext.request.contextPath}/Aboutus.jsp"> <%=u.getFirstName()%>'s profile</a></div>
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">Social Media</div>
