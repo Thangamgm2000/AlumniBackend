@@ -70,7 +70,7 @@
   <body>
   <%@ page import= "Model.DataConnector,Model.UserBase" %>
 	<%  
-	String rollNumber = "CB.EN.P2EEE12328";  
+	String rollNumber = "CB.EN.P2EIE14258";  
 	UserBase u=DataConnector.getRecordById(rollNumber);  
 	%>
     <div>
