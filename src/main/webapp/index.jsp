@@ -96,7 +96,7 @@
         </hr><br>
         <div class="panel panel-default">
           <div class="panel-heading">Website/ Social media/ Linkedin </div>
-          <div class="panel-body"><a href="${pageContext.request.contextPath}/Aboutus.jsp"> <%=u.getFirstName()%>'s profile</a></div>
+          <div class="panel-body"><a href="Aboutus.jsp"> <%=u.getFirstName()%>'s profile</a></div>
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">Social Media</div>
