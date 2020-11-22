@@ -43,6 +43,7 @@ public class DataConnector {
 				u.setCourseEnrolled(rs.getString("CourseEnrolled"));
 				u.setCgpa(Float.parseFloat(rs.getString("CGPA")));
 				u.setAcademicAdvisor(rs.getString("AcademicAdvisor"));
+				u.setAcademicBatch(rs.getString("AdacemicBatch"));
 				u.setDept(rs.getString("Department"));
 	        }  
 	    }catch(Exception e){System.out.println(e);}  
