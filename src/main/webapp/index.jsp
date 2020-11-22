@@ -74,7 +74,8 @@
 	UserBase u=DataConnector.getRecordById(rollNumber);  
 	%>
     <div>
-      <button class="btn btn-warning btn-lg" style="margin: 15px;" onclick="window.history.back()">
+      <a href="Aboutus.jsp">
+      <button class="btn btn-warning btn-lg" style="margin: 15px;"></a>
         Go Back
       </button>
       <br/>
