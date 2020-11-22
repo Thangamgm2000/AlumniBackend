@@ -39,7 +39,11 @@ public class DataConnector {
 	            u.setPersonalEmail(rs.getString("PersonalEmail"));  
 	            u.setMobileNumber(rs.getString("MobileNumber"));
 	            u.setCity(rs.getString("City"));
-	            u.setShortBio(rs.getString("ShortBio"));
+				u.setShortBio(rs.getString("ShortBio"));
+				u.setCourseEnrolled(rs.getString("CourseEnrolled"));
+				u.setCgpa(Float.parseFloat(rs.getString("CGPA")));
+				u.setAcademicAdvisor(rs.getString("AcademicAdvisor"));
+				u.setDept(rs.getString("Department"));
 	        }  
 	    }catch(Exception e){System.out.println(e);}  
 	    return u;  

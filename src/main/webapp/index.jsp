@@ -161,7 +161,7 @@
                   <label for="email">
                     <h4>City</h4>
                   </label>
-                  <input type="email" class="form-control" id="city" placeholder="Current city" value="<%=u.getCity() %>">
+                  <input type="text" class="form-control" id="city" placeholder="Current city" value="<%=u.getCity() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -196,7 +196,7 @@
                   <label for="course">
                     <h4>Course enrolled</h4>
                   </label>
-                  <input type="text" class="form-control" name="course" id="course" placeholder="eg. BTech">
+                  <input type="text" class="form-control" name="course" id="course" placeholder="eg. BTech" value="<%=u.getCourseEnrolled() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -204,7 +204,7 @@
                   <label for="Batch">
                     <h4>Academic Batch</h4>
                   </label>
-                  <input type="text" class="form-control" name="batch" id="batch" placeholder="starting_year - ending_year">
+                  <input type="text" class="form-control" name="batch" id="batch" placeholder="starting_year - ending_year" value="<%=u.getAcademicBatch() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -212,7 +212,7 @@
                   <label for="Department">
                     <h4>Department</h4>
                   </label>
-                  <input type="text" class="form-control" name="dept_name" id="dept_name" placeholder="Department name">
+                  <input type="text" class="form-control" name="dept_name" id="dept_name" placeholder="Department name" value="<%=u.getDept() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -220,7 +220,7 @@
                   <label for="roll_number">
                     <h4>Rollnumber</h4>
                   </label>
-                  <input type="text" class="form-control" name="roll_no" id="roll_no" placeholder="eg. CB.EN.U4CSE16253" >
+                  <input type="text" class="form-control" name="roll_no" id="roll_no" placeholder="eg. CB.EN.U4CSE16253" value="<%=u.getRollNumber() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -228,7 +228,7 @@
                   <label for="advisor">
                     <h4>Academic Advisor</h4>
                   </label>
-                  <input type="text" class="form-control" name="advisor" id="advisor" placeholder="Name of advisor">
+                  <input type="text" class="form-control" name="advisor" id="advisor" placeholder="Name of advisor" value="<%=u.getAcademicAdvisor() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -236,7 +236,7 @@
                   <label for="cgpa">
                     <h4>CGPA</h4>
                   </label>
-                  <input type="text" class="form-control" id="cgpa" name="cgpa" placeholder="CGPA in scale of 10" title="enter a location">
+                  <input type="text" class="form-control" id="cgpa" name="cgpa" placeholder="CGPA in scale of 10" value="<%=u.getCgpa() %>">
                 </div>
               </div>
               <div class="form-group">
