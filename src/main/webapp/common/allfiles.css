@@ -1,0 +1,13 @@
+body {
+  padding-top: 60px !important;
+  font-family: "Tahoma";
+}
+#page_title {
+  font-family: titleFont;
+  padding-top: 15px;
+}
+
+@font-face {
+  font-family: titleFont;
+  src: url(/fonts/Countryside-YdKj.ttf);
+}
