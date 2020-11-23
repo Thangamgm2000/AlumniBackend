@@ -65,7 +65,7 @@
 		Meet the Developers!</kbd>
 	</div>
 	<div class="row mx-0 justify-content-center my-3">
-		<a href="contactus.html" class="text text-primary">
+		<a href="contactus.jsp" class="text text-primary">
 			<button class="btn btn-primary" style="border-radius: 10px;">
 				Reach Out to Us
 			</button>

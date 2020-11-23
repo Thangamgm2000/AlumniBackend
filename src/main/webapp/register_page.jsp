@@ -25,7 +25,7 @@
 	<div id="nav-placeholder"></div>
 	<div class="card mx-auto text-center mucard" style="width: 600px; border-radius: 20px; background-color: #335d2d;">
 		<div class="card-body">
-			<img src="register_banner.jpg" style="width: 560px; border-radius: 10px;">
+			<img src="img/register_banner.jpg" style="width: 560px; border-radius: 10px;">
 			<div class="form-group">
 				<form>
 				<p class="content-holder card-text mt-4 d-flex justify-content-center">

@@ -116,7 +116,7 @@
         <div>
 	        <div>
 
-	            <a class="firstButton btn btn-danger" href="upcoming_events.html" role="button">Upcoming Alumni Events</a>
+	            <a class="firstButton btn btn-danger" href="upcoming_events.jsp" role="button">Upcoming Alumni Events</a>
 	            <div class="card firstImage mt-3" >
 	                <div class="card-body">
 	                    <a id = "link1" href = "https://www.amrita.edu/event/fish-philosophy-prof-methil-krish">
