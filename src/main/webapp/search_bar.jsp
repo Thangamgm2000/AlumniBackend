@@ -59,6 +59,6 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src='search_bar.js'></script>
+	<script type="text/javascript" src='js/search_bar.js'></script>
 </body>
 </html>
