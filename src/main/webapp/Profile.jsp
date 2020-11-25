@@ -76,7 +76,7 @@
   {
     response.sendRedirect("login_page.jsp");
   }
-  UserBase u=DataConnector.getRecordById(rollNumber);
+  UserBase u=DataConnector.getRecordById(RollNumber);
   List<AchievementsBase> achievements= u.getAchievements();
   List<JobsBase> jobs= u.getJobs();
   int achievementsSize = achievements.size();
