@@ -78,6 +78,7 @@
   int achievementsSize = achievements.size();
   int jobsSize = jobs.size();
   request.setAttribute("achievements",achievements);
+  request.setAttribute("jobs",jobs);
 	%>
     <div>
       <button class="btn btn-warning btn-lg" style="margin: 15px;" onclick="window.history.back()">
@@ -369,11 +370,17 @@
             <h2>Work experience</h2>
             <button type="button" id="add-career" class="btn btn-info btn-lg" data-toggle="modal" data-target="#careerModal">Add a position</button>
             <font color="black">
+            <c:forEach items="${jobs}" var="job">
+            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
+              <div class="panel-heading">${job.getRoleName()}</div>
+              <div class="panel-body">${job.getStartMonth()} -  ${job.getEndMonth()}</div>
+            </div>
+            </c:forEach>
             <div class="panel panel-info pannel_style" data-href='#careerModal' id='achievement-pannel'>
-              <div class="panel-heading">Data Scientist</div>
+              <div class="panel-heading">${job.getRoleName()}</div>
               <div class="panel-body">
-                <a href='https://about.google/?utm_source=google-IN&utm_medium=referral&utm_campaign=hp-footer&fg=1'>Google</a><br/>
-                August 2018 to Present
+                <a href='https://about.google/?utm_source=google-IN&utm_medium=referral&utm_campaign=hp-footer&fg=1'>${job.getOrganization()}</a><br/>
+                ${job.getStartMonth()} -  ${job.getEndMonth()}
               </div>
             </div>
             <div class="panel panel-info pannel_style" data-href='#careerModal' id='achievement-pannel'>
