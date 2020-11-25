@@ -32,7 +32,6 @@ public class DataConnector {
 	        ResultSet rs=ps.executeQuery();  
 	        while(rs.next()){  
 	            u=new UserBase();
-	            System.out.println(rs.getString("RollNumber"));
 	            u.setRollNumber(rs.getString("RollNumber"));  
 	            u.setFirstName(rs.getString("FirstName"));  
 	            u.setLastName(rs.getString("LastName"));  
@@ -68,6 +67,7 @@ public class DataConnector {
 			ps=con.prepareStatement("select * from Jobs where "
 	        		+ "RollNumber=?");  
 			ps.setString(1, rollNumber);
+			rs = ps.executeQuery();
 			u.setAchievements(achievements);
 			ArrayList<JobsBase> jobs = new ArrayList<JobsBase>();
 			while(rs.next())
@@ -87,6 +87,30 @@ public class DataConnector {
 			  
 	    }catch(Exception e){System.out.println(e);}  
 	    return u;  
-	}  
+	}
+	public static int updateProfile(UserBase u){  
+		int status=0;  
+		try{  
+			Connection con=getConnection();  
+			PreparedStatement ps=con.prepareStatement(  
+		"update profile_home_academic set FirstName=?,LastName=?,OfficialEmail=?,PersonalEmail=?,MobileNumber=?,City=?,ShortBio=?,"+
+		"CourseEnrolled=?,CGPA=?,AcademicAdvisor=?,AdacemicBatch=?,Department=?"+
+		" where RollNumber=?");  
+			ps.setString(1,u.getFirstName());  
+			ps.setString(2,u.getLastName());  
+			ps.setString(3,u.getOfficialEmail());  
+			ps.setString(4,u.getPersonalEmail());  
+			ps.setString(5,u.getMobileNumber());  
+			ps.setString(6,u.getCity());
+			ps.setString(7,u.getShortBio());
+			ps.setString(8,u.getCourseEnrolled());
+			ps.setFloat(9,u.getCgpa());
+			ps.setString(10, u.getAcademicAdvisor());
+			ps.setString(11,u.getAcademicBatch());
+			ps.setString(12, u.getDept());
+			status=ps.executeUpdate();  
+		}catch(Exception e){System.out.println(e);}  
+		return status;  
+	}    
 	
 }

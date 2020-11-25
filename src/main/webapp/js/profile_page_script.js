@@ -79,7 +79,7 @@ $(document).ready(function() {
           // The key name on the left side is the name attribute
           // of an input field. Validation rules are defined
           // on the right side
-          batch: "properbatch",
+          academicBatch: "properbatch",
           cgpa: {
               number: true,
               max: 10
@@ -87,7 +87,7 @@ $(document).ready(function() {
         },
         // Specify validation error messages
         messages: {
-          batch: "Please enter correct batch (20xx-20xx)",
+            academicBatch: "Please enter correct batch (20xx-20xx)",
           cgpa: "Enter a valid cgpa between 0 to 10"
         },
         // Make sure the form is submitted to the destination defined

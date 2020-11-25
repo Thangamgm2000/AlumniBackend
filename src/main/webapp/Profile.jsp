@@ -128,7 +128,7 @@
                   <label for="first_name">
                     <h4>First name</h4>
                   </label>
-                  <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" value="<%=u.getFirstName()%>">
+                  <input type="text" class="form-control" name="firstName" id="first_name" placeholder="first name" value="<%=u.getFirstName()%>">
                 </div>
               </div>
               <div class="form-group">
@@ -136,7 +136,7 @@
                   <label for="last_name">
                     <h4>Last name</h4>
                   </label>
-                  <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" value="<%=u.getLastName() %>">
+                  <input type="text" class="form-control" name="lastName" id="last_name" placeholder="last name" value="<%=u.getLastName() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -144,7 +144,7 @@
                   <label for="email">
                     <h4>Official Email address</h4>
                   </label>
-                  <input type="email" class="form-control" name="off_email" id="off_email" placeholder="xyz@yourorg.com" value="<%=u.getOfficialEmail() %>">
+                  <input type="email" class="form-control" name="officialEmail" id="off_email" placeholder="xyz@yourorg.com" value="<%=u.getOfficialEmail() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -152,7 +152,7 @@
                   <label for="email">
                     <h4>Personal Email address</h4>
                   </label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="your email id" value="<%=u.getPersonalEmail() %>">
+                  <input type="email" class="form-control" name="personalEmail" id="email" placeholder="your email id" value="<%=u.getPersonalEmail() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -160,7 +160,7 @@
                   <label for="mobile">
                     <h4>Mobile number</h4>
                   </label>
-                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter your mobile number with countrycode" value="<%=u.getMobileNumber() %>">
+                  <input type="text" class="form-control" name="mobileNumber" id="mobile" placeholder="enter your mobile number with countrycode" value="<%=u.getMobileNumber() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -176,7 +176,7 @@
                   <label for="bio">
                     <h4>Bio</h4>
                   </label>
-                  <textarea class="form-control" rows="6" id="bio" ><%=u.getShortBio() %></textarea>
+                  <textarea class="form-control" rows="6" id="shortBio" ><%=u.getShortBio() %></textarea>
                 </div>
               </div>
               <div class="form-group">
@@ -203,7 +203,7 @@
                   <label for="course">
                     <h4>Course enrolled</h4>
                   </label>
-                  <input type="text" class="form-control" name="course" id="course" placeholder="eg. BTech" value="<%=u.getCourseEnrolled() %>">
+                  <input type="text" class="form-control" name="courseEnrolled" id="course" placeholder="eg. BTech" value="<%=u.getCourseEnrolled() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -211,7 +211,7 @@
                   <label for="Batch">
                     <h4>Academic Batch</h4>
                   </label>
-                  <input type="text" class="form-control" name="batch" id="batch" placeholder="starting_year - ending_year" value="<%=u.getAcademicBatch() %>">
+                  <input type="text" class="form-control" name="academicBatch" id="batch" placeholder="starting_year - ending_year" value="<%=u.getAcademicBatch() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -219,7 +219,7 @@
                   <label for="Department">
                     <h4>Department</h4>
                   </label>
-                  <input type="text" class="form-control" name="dept_name" id="dept_name" placeholder="Department name" value="<%=u.getDept() %>">
+                  <input type="text" class="form-control" name="dept" id="dept_name" placeholder="Department name" value="<%=u.getDept() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -227,7 +227,7 @@
                   <label for="roll_number">
                     <h4>Rollnumber</h4>
                   </label>
-                  <input type="text" class="form-control" name="roll_no" id="roll_no" placeholder="eg. CB.EN.U4CSE16253" value="<%=u.getRollNumber() %>">
+                  <input type="text" class="form-control" name="rollNumber" id="roll_no" placeholder="eg. CB.EN.U4CSE16253" value="<%=u.getRollNumber() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -235,7 +235,7 @@
                   <label for="advisor">
                     <h4>Academic Advisor</h4>
                   </label>
-                  <input type="text" class="form-control" name="advisor" id="advisor" placeholder="Name of advisor" value="<%=u.getAcademicAdvisor() %>">
+                  <input type="text" class="form-control" name="academicAdvisor" id="advisor" placeholder="Name of advisor" value="<%=u.getAcademicAdvisor() %>">
                 </div>
               </div>
               <div class="form-group">
