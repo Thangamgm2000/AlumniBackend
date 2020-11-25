@@ -68,13 +68,16 @@
     </style>
   </head>
   <body>
-  <%@ page import= "Model.DataConnector,Model.UserBase,java.util.ArrayList,Model.AchievementsBase,Model.JobsBase" %>
+  <%@ page import= "Model.DataConnector,Model.UserBase,java.util.List,Model.AchievementsBase,Model.JobsBase" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%  
 	String rollNumber = "CB.EN.P2EIE14258";  
   UserBase u=DataConnector.getRecordById(rollNumber);
-  ArrayList<AchievementsBase> achivements= u.getAchievements();
-  ArrayList<JobsBase> jobs= u.getJobs();
+  List<AchievementsBase> achievements= u.getAchievements();
+  List<JobsBase> jobs= u.getJobs();
+  int achievementsSize = achievements.size();
+  int jobsSize = jobs.size();
+  request.setAttribute("achievements",achievements);
 	%>
     <div>
       <button class="btn btn-warning btn-lg" style="margin: 15px;" onclick="window.history.back()">
@@ -267,10 +270,6 @@
               <div class="panel-body">${ach.getDateOfAccomplishment()}</div>
             </div>
             </c:forEach>
-            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
-              <div class="panel-heading">Outstanding student award</div>
-              <div class="panel-body">July 2018</div>
-            </div>
             </font>
             <h2>Sports and Culturals achievements</h2>
             <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add an achivement</button>
