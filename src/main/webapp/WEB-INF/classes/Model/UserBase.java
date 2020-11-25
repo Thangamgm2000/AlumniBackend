@@ -1,17 +1,34 @@
 package Model;
+import java.util.ArrayList;
 public class UserBase {
 
 	String rollNumber,firstName,lastName,mobileNumber,officialEmail,personalEmail,
 	city,shortBio,courseEnrolled,academicBatch,dept,academicAdvisor;
 	float cgpa;
+	ArrayList<AchievementsBase> achievements;
+	ArrayList<JobsBase> jobs;
 	UserBase()
 	{
 		rollNumber = "";firstName="";lastName="";mobileNumber="";officialEmail="";
 		personalEmail="";city="";shortBio="";courseEnrolled="";academicBatch="";dept="";
 		academicAdvisor="";
 		cgpa=-1;
+		achievements = new ArrayList<AchievementsBase>();
+		jobs = new ArrayList<JobsBase>();
 	}
 	//generate Getters andSetters
+	public ArrayList<AchievementsBase> getAchievements() {
+		return achievements;
+	}
+	public void setAchievements(ArrayList<AchievementsBase> achievements) {
+		this.achievements = achievements;
+	}
+	public ArrayList<JobsBase> getJobs() {
+		return jobs;
+	}
+	public void setJobs(ArrayList<JobsBase> jobs) {
+		this.jobs = jobs;
+	}
 	public String getRollNumber() {
 		return rollNumber;
 	}

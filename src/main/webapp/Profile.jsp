@@ -68,14 +68,16 @@
     </style>
   </head>
   <body>
-  <%@ page import= "Model.DataConnector,Model.UserBase" %>
+  <%@ page import= "Model.DataConnector,Model.UserBase,java.util.ArrayList,Model.AchievementsBase,Model.JobsBase" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%  
 	String rollNumber = "CB.EN.P2EIE14258";  
-	UserBase u=DataConnector.getRecordById(rollNumber);  
+  UserBase u=DataConnector.getRecordById(rollNumber);
+  ArrayList<AchievementsBase> achivements= u.getAchievements();
+  ArrayList<JobsBase> jobs= u.getJobs();
 	%>
     <div>
-      <a href="${pageContext.request.contextPath}/Aboutus.jsp">
-      <button class="btn btn-warning btn-lg" style="margin: 15px;"></a>
+      <button class="btn btn-warning btn-lg" style="margin: 15px;" onclick="window.history.back()">
         Go Back
       </button>
       <br/>
@@ -259,10 +261,12 @@
             <h2>Academic achievements</h2>
             <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal" >Add an achivement</button>
             <font color="black">
+            <c:forEach items="${achievements}" var="ach">
             <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
-              <div class="panel-heading">Best Project of the year</div>
-              <div class="panel-body">December 2017</div>
+              <div class="panel-heading"><%=ach.getName() %></div>
+              <div class="panel-body"><%=ach.getDateOfAccomplishment() %></div>
             </div>
+            </c:forEach>
             <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
               <div class="panel-heading">Outstanding student award</div>
               <div class="panel-body">July 2018</div>
