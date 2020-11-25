@@ -71,8 +71,8 @@
   <%@ page import= "Model.DataConnector,Model.UserBase,java.util.List,Model.AchievementsBase,Model.JobsBase,Model.SessionValidation" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%  
-	String rollNumber = SessionValidation.getSessionRollno();  
-  if(rollNumber==null)
+	String RollNumber = (String)request.getSession(false).getAttribute("RollNumber");
+  if(RollNumber)
   {
     response.sendRedirect("login_page.jsp");
   }
