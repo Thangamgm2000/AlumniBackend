@@ -72,7 +72,7 @@
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%  
 	String RollNumber = (String)request.getSession(false).getAttribute("RollNumber");
-  if(RollNumber)
+  if(RollNumber==null)
   {
     response.sendRedirect("login_page.jsp");
   }
