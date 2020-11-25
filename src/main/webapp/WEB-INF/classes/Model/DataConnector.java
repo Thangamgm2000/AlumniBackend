@@ -65,6 +65,9 @@ public class DataConnector {
 				ach.setDescription(rs.getString("Description"));
 				achievements.add(ach);
 			}
+			ps=con.prepareStatement("select * from Jobs where "
+	        		+ "RollNumber=?");  
+			ps.setString(1, rollNumber);
 			u.setAchievements(achievements);
 			ArrayList<JobsBase> jobs = new ArrayList<JobsBase>();
 			while(rs.next())
