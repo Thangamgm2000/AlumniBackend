@@ -263,8 +263,8 @@
             <font color="black">
             <c:forEach items="${achievements}" var="ach">
             <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
-              <div class="panel-heading"><%=ach.getName() %></div>
-              <div class="panel-body"><%=ach.getDateOfAccomplishment() %></div>
+              <div class="panel-heading">${ach.getName()}</div>
+              <div class="panel-body">${ach.getDateOfAccomplishment()}</div>
             </div>
             </c:forEach>
             <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
