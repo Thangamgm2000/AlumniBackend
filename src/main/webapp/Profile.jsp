@@ -68,10 +68,14 @@
     </style>
   </head>
   <body>
-  <%@ page import= "Model.DataConnector,Model.UserBase,java.util.List,Model.AchievementsBase,Model.JobsBase" %>
+  <%@ page import= "Model.DataConnector,Model.UserBase,java.util.List,Model.AchievementsBase,Model.JobsBase,Model.SessionValidation" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%  
-	String rollNumber = "CB.EN.P2EIE14258";  
+	String rollNumber = SessionValidation.getSessionRollno();  
+  if(rollNumber==null)
+  {
+    response.sendRedirect("login_page.jsp");
+  }
   UserBase u=DataConnector.getRecordById(rollNumber);
   List<AchievementsBase> achievements= u.getAchievements();
   List<JobsBase> jobs= u.getJobs();

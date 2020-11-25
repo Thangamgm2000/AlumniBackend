@@ -70,7 +70,7 @@
 		    else if(pwd.length < 6)
 		      alert("Password length is minimum 6 characters");
 		  	else 
-		  		location.href = "login_page.jsp";
+		  		location.href = "PerformLogin";
 		  }   
     </script>
 </body>
