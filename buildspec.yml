@@ -6,6 +6,8 @@ phases:
       java: corretto11
   post_build:
     commands:
+      - find -name "*.java" > sources.txt
+      - javac @sources.txt
       - mvn package
       - mv target/ROOT.war ROOT.war
 artifacts:
