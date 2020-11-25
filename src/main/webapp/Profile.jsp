@@ -371,11 +371,6 @@
             <button type="button" id="add-career" class="btn btn-info btn-lg" data-toggle="modal" data-target="#careerModal">Add a position</button>
             <font color="black">
             <c:forEach items="${jobs}" var="job">
-            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
-              <div class="panel-heading">${job.getRoleName()}</div>
-              <div class="panel-body">${job.getStartMonth()} -  ${job.getEndMonth()}</div>
-            </div>
-            </c:forEach>
             <div class="panel panel-info pannel_style" data-href='#careerModal' id='achievement-pannel'>
               <div class="panel-heading">${job.getRoleName()}</div>
               <div class="panel-body">
@@ -383,6 +378,8 @@
                 ${job.getStartMonth()} -  ${job.getEndMonth()}
               </div>
             </div>
+            </c:forEach>
+            
             <div class="panel panel-info pannel_style" data-href='#careerModal' id='achievement-pannel'>
               <div class="panel-heading">Research intern</div>
               <div class="panel-body">
