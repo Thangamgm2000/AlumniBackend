@@ -270,6 +270,10 @@
               <div class="panel-body">${ach.getDateOfAccomplishment()}</div>
             </div>
             </c:forEach>
+            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
+              <div class="panel-heading">Outstanding student award</div>
+              <div class="panel-body">July 2018 <%=achievements.size()%></div>
+            </div>
             </font>
             <h2>Sports and Culturals achievements</h2>
             <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add an achivement</button>
