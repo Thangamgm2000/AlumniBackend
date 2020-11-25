@@ -122,7 +122,7 @@
         <div class="tab-content">
           <div class="tab-pane active" id="home">
             
-            <form class="form" action="##" method="post" id="registrationForm">
+            <form class="form" action="ProfileFormHandler.jsp" method="post" id="registrationForm">
               <div class="form-group">
                 <div class="col-xs-6">
                   <label for="first_name">
@@ -197,7 +197,7 @@
           <div class="tab-pane" id="academics">
             <h2></h2>
             
-            <form class="form" action="##" method="post" id="academicForm">
+            <form class="form" action="ProfileFormHandler.jsp" method="post" id="academicForm">
               <div class="form-group">
                 <div class="col-xs-6">
                   <label for="course">
