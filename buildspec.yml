@@ -6,7 +6,7 @@ phases:
       java: corretto11
   post_build:
     commands:
-      -mvn dependency:resolve
+      - mvn dependency:resolve
       - find -name "*.java" > sources.txt
       - javac @sources.txt
       - mvn package
