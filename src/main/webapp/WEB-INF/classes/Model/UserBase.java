@@ -7,7 +7,7 @@ public class UserBase {
 	float cgpa;
 	ArrayList<AchievementsBase> achievements;
 	ArrayList<JobsBase> jobs;
-	UserBase()
+	public UserBase()
 	{
 		rollNumber = "";firstName="";lastName="";mobileNumber="";officialEmail="";
 		personalEmail="";city="";shortBio="";courseEnrolled="";academicBatch="";dept="";
