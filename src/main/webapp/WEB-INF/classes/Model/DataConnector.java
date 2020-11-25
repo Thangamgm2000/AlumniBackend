@@ -91,7 +91,7 @@ public class DataConnector {
 	public static int updateProfile(UserBase u){  
 		int status=0;  
 		try{  
-			Connection con=getConnection();  
+			Connection con= connect();  
 			PreparedStatement ps=con.prepareStatement(  
 		"update profile_home_academic set FirstName=?,LastName=?,OfficialEmail=?,PersonalEmail=?,MobileNumber=?,City=?,ShortBio=?,"+
 		"CourseEnrolled=?,CGPA=?,AcademicAdvisor=?,AdacemicBatch=?,Department=?"+
