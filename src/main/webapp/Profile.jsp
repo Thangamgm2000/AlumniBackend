@@ -271,33 +271,22 @@
               <div class="panel-body">${ach.getDateOfAccomplishment()}</div>
             </div>
             </c:forEach>
-            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
-              <div class="panel-heading">Outstanding student award</div>
-              <div class="panel-body">July 2018 <%=achievements.size()%></div>
-            </div>
+            
             </font>
             <h2>Sports and Culturals achievements</h2>
             <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add a Sports/Cultural achivement</button>
             <font color="black">
-            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
-              <div class="panel-heading">Best player of the tournament award - Table Tennis</div>
-              <div class="panel-body">August 2016</div>
-            </div>
+            
             </font>
             <h2>Work achievements</h2>
             <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add a Work achivement</button>
             <font color="black">
-            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
-              <div class="panel-heading">Patent: Generative adversial networks</div>
-              <div class="panel-body">January 2020</div>
-            </div>
+            
             </font>
             <h2>Other achievements</h2>
-            <div class="panel  panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
+            
               <font color="black">
-              <div class="panel-heading">Public speaking competition runner up</div>
-              <div class="panel-body">December 2016</div>
-            </div>
+              
             <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add other achivements</button>
             <div class="modal fade" id="achievementModal" role="dialog">
               <div class="modal-dialog">
@@ -380,13 +369,6 @@
             </div>
             </c:forEach>
             
-            <div class="panel panel-info pannel_style" data-href='#careerModal' id='achievement-pannel'>
-              <div class="panel-heading">Research intern</div>
-              <div class="panel-body">
-                <a href='https://about.twitter.com/'>Twitter</a><br/>
-                April 2016 to May 2016
-              </div>
-            </div>
             <div class="modal fade" id="careerModal" role="dialog">
               <div class="modal-dialog">
                 <!-- Modal content-->
