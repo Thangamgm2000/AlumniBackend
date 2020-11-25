@@ -263,7 +263,7 @@
           <div class="tab-pane" id="achievements">
             
             <h2>Academic achievements</h2>
-            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal" >Add an achivement</button>
+            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal" >Add an Academic achivement</button>
             <font color="black">
             <c:forEach items="${achievements}" var="ach">
             <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
@@ -277,7 +277,7 @@
             </div>
             </font>
             <h2>Sports and Culturals achievements</h2>
-            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add an achivement</button>
+            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add a Sports/Cultural achivement</button>
             <font color="black">
             <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
               <div class="panel-heading">Best player of the tournament award - Table Tennis</div>
@@ -285,7 +285,7 @@
             </div>
             </font>
             <h2>Work achievements</h2>
-            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add an achivement</button>
+            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add a Work achivement</button>
             <font color="black">
             <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
               <div class="panel-heading">Patent: Generative adversial networks</div>
@@ -298,7 +298,7 @@
               <div class="panel-heading">Public speaking competition runner up</div>
               <div class="panel-body">December 2016</div>
             </div>
-            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add an achivement</button>
+            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add other achivements</button>
             <div class="modal fade" id="achievementModal" role="dialog">
               <div class="modal-dialog">
                 <!-- Modal content-->
