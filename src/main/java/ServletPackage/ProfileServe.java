@@ -28,7 +28,7 @@ public class ProfileServe extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession(false);
-		if(session!=null && session.getAttribute("rollnumber")!=null){  
+		if(session!=null && session.getAttribute("rollNumber")!=null){  
             String rollNumber=(String)session.getAttribute("rollNumber");  
             response.sendRedirect("Profile.jsp");
             }  
