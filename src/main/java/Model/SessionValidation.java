@@ -1,3 +1,4 @@
+package Model;
 import javax.servlet.http.HttpSession; 
 public class SessionValidation
 {
