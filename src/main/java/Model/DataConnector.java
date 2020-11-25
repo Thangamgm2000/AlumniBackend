@@ -108,7 +108,7 @@ public class DataConnector {
 			ps.setString(10, u.getAcademicAdvisor());
 			ps.setString(11,u.getAcademicBatch());
 			ps.setString(12, u.getDept());
-			ps.setString(13, SessionValidation.getSessionRollno());
+			ps.setString(13, u.getRollNumber());
 			status=ps.executeUpdate();  
 		}catch(Exception e){System.out.println(e);}  
 		return status;  
