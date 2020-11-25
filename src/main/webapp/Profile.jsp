@@ -68,7 +68,7 @@
     </style>
   </head>
   <body>
-  <%@ page import= "Model.DataConnector,Model.UserBase,java.util.List,Model.AchievementsBase,Model.JobsBase,Model.SessionValidation" %>
+  <%@ page import= "Model.DataConnector,Model.UserBase,java.util.List,Model.AchievementsBase,Model.JobsBase" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%  
 	String RollNumber = (String)request.getSession(false).getAttribute("RollNumber");
