@@ -1,7 +1,7 @@
 package Model;
 import java.lang.reflect.InvocationTargetException;
 import org.apache.commons.beanutils.BeanUtilsBean;
-public ProfileMerger extends BeanUtilsBean{
+public class ProfileMerger extends BeanUtilsBean{
     @Override
     public void copyProperty(Object dest, String name, Object value)
             throws IllegalAccessException, InvocationTargetException {
