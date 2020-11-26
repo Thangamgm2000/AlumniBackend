@@ -5,7 +5,7 @@
 String RollNumber = (String)request.getSession(false).getAttribute("rollNumber");
 UserBase loggedUser = (UserBase)request.getSession(false).getAttribute("userLogged");
 ProfileMerger profileMerger = new ProfileMerger();
-profileMerger.copyProperties(u,loggedUser);
+profileMerger.copyProperties(loggedUser,u);
 //u.setRollNumber(loggedUser.getRollNumber());
 int status=DataConnector.updateProfile(loggedUser);
 response.sendRedirect("/ProfileServe");
