@@ -20,7 +20,7 @@ public class ProfileMerger extends BeanUtilsBean{
         
         
     }
-    catch (ExcpetionE)
+    catch (Excpetion e)
     {
         return;
     }
