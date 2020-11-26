@@ -55,7 +55,7 @@ public class SimpleEmailServiceAPI
                         "Please make sure that your credentials file is at the correct " +
                         "location (C:\\Users\\hp\\.aws\\credentials), and is in valid format.",
                         e);
-                return false;
+               
             }
 
             // Instantiate an Amazon SES client, which will make the service call with the supplied AWS credentials.
