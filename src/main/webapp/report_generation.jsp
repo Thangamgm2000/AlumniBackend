@@ -64,12 +64,7 @@
             request.setAttribute("data",data);
   %>
 <body>
-    <script>
-        $(function () {
-            $("#nav-placeholder").load("common/navbar.html");
-        });
-        console.log("Loaded!")
-    </script>
+    <jsp:include page="navbar.jsp"/>
     
     <div id="nav-placeholder"></div>
     <div class="container bootstrap snippet myclass">

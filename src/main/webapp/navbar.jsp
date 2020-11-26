@@ -17,9 +17,7 @@
         <button type="button" class="btn btn-light" style='padding:0'>
             <a class="nav-link" href="search_bar.jsp">Search</a>
         </button>
-        <button type="button" class="btn btn-light" style='padding:0'>
-            <a class="nav-link" href="report_generation.jsp">Report</a>
-        </button>
+        
         <button type="button" class="btn btn-light" style='padding:0'>
             <a class="nav-link" href="upcoming_events.jsp">Events</a>
         </button>

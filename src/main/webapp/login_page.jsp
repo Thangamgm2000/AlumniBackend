@@ -53,11 +53,7 @@
 			</div>
 		</div>
 	</div>
-	<script>
-        $(function () {
-            $("#nav-placeholder").load("common/navbar.html");
-        });
-    </script>
+	<jsp:include page="navbar.jsp"/>
     <script type="text/javascript">
     	 function login()
 		  {

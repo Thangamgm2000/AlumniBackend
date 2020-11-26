@@ -35,12 +35,7 @@
 </head>
 
 <body>
-    <script>
-        $(function () {
-            $("#nav-placeholder").load("common/navbar.html");
-        });
-        console.log("Loaded!")
-    </script>
+    <jsp:include page="navbar.jsp"/>
     
     <div id="nav-placeholder"></div>
     

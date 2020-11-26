@@ -108,11 +108,7 @@
 	</script>
 </head>
 <body>
-	<script>
-        $(function () {
-            $("#nav-placeholder").load("common/navbar.html");
-        });
-    </script>
+	<jsp:include page="navbar.jsp"/>
     
     <div id="nav-placeholder"></div>
 	<div class="card mx-auto mycard" style="width: 800px;">

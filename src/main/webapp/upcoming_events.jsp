@@ -85,12 +85,7 @@
         request.setAttribute("links",links);
         request.setAttribute("summary",summary);
     %>
-    <script>
-        $(function () {
-            $("#nav-placeholder").load("common/navbar.html");
-        });
-        console.log("Loaded!")
-    </script>
+    <jsp:include page="navbar.jsp"/>
     
     <div id="nav-placeholder"></div>
     <div class="outer">
