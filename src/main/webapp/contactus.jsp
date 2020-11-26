@@ -18,7 +18,11 @@
 <body>
 <%@ page import= "Model.SimpleEmailServiceAPI" %>
 <% 
-	SimpleEmailServiceAPI.sendMessage();
+	String status = "Failed";
+	if(SimpleEmailServiceAPI.sendMessage())
+	{
+		status = "success";
+	}
 	%>
 	<div class="container-contact100">
 		<div class="contact100-map" id="google_map"></div>
@@ -35,7 +39,7 @@
 				</span>
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<span class="label-input100">Name</span>
+					<span class="label-input100">Name <%=status %></span>
 					<input class="input100" type="text" name="name" placeholder="Name...">
 					<!-- <span class="focus-input100"></span> -->
 				</div>

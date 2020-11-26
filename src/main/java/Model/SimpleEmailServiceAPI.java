@@ -20,7 +20,7 @@ public class SimpleEmailServiceAPI
     static final String BODY = "This email was sent through Amazon SES by using the AWS SDK for Java.";
     static final String SUBJECT = "Amazon SES test (AWS SDK for Java)";
 
-    public static void sendMessage() throws IOException
+    public static boolean sendMessage() throws IOException
     {
         Destination destination = new Destination().withToAddresses(new String[]{TO});
 
@@ -55,6 +55,7 @@ public class SimpleEmailServiceAPI
                         "Please make sure that your credentials file is at the correct " +
                         "location (C:\\Users\\hp\\.aws\\credentials), and is in valid format.",
                         e);
+                return false;
             }
 
             // Instantiate an Amazon SES client, which will make the service call with the supplied AWS credentials.
@@ -70,11 +71,13 @@ public class SimpleEmailServiceAPI
 
             // Send the email.
             client.sendEmail(request);
+            return true;
             //System.out.println("Email sent!");
 
         } catch (Exception ex) {
             //System.out.println("The email was not sent.");
             System.out.println("Error message: " + ex.getMessage());
+            return false;
             
         }
     }
