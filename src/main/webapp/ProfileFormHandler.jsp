@@ -1,4 +1,4 @@
-<%@ page import="Model.DataConnector" session="false"%%>  
+<%@ page import="Model.DataConnector" session="false"%>  
 <jsp:useBean id="u" class="Model.UserBase"></jsp:useBean>  
 <jsp:setProperty property="*" name="u"/>  
 <%
