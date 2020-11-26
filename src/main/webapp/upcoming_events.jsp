@@ -74,6 +74,17 @@
     </style>
 </head>
 <body>
+    <%@ page import= "Model.EventsManager,java.util.ArrayList" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <% 
+        ArrayList<String> images = EventsManager.getImages(); 
+        System.out.println(images.size());
+        ArrayList<String> links = EventsManager.getLink();
+        ArrayList<String> summary = EventsManager.getSummary();
+        request.setAttribute("images",images);
+        request.setAttribute("links",links);
+        request.setAttribute("summary",summary);
+    %>
     <script>
         $(function () {
             $("#nav-placeholder").load("common/navbar.html");
@@ -117,27 +128,27 @@
         </div>
     </div>
     <script>
-        var images = [
-            "img/update-1.jpg",
-            "img/update-2.jpg",
-            "img/update-3.jpg",
-            "img/update-4.jpg"
-        ];
+        var images = new Array(4);
+        var i = 0;
+        console.log(images.length);
+        <c:forEach items="${images}" var="img">
+            images[i] = "${img}";
+            i++;
+        </c:forEach>
 
-        var links = [
-            "https://www.amrita.edu/event/fish-philosophy-prof-methil-krish", 
-            "https://www.amrita.edu/event/big-talk-scientific-temper-spiritual-understanding-education-beyond-boundaries-mrs-sindhu",
-            "https://www.amrita.edu/event/article-writing-competition-2020-biological-invasioninvasive-species-your-locality",
-            "https://www.amrita.edu/event/article-writing-competition-2020-biological-invasioninvasive-species-your-locality"
-        ];
+        var links = new Array(4);
+        i = 0;
+        <c:forEach items="${links}" var="link">
+            links[i] = "${link}";
+            i++;
+        </c:forEach>
 
-        var texts = [
-            "Webinar on The Fish Philosophy by Prof. Methil Krish- Sep 18",
-            "Scientific Temper & A Spiritual Understanding - by Mrs. Sindhu Pillai - Sep 19",
-            "You are the Light - Felicitation Ceremony - National Teachers Awardee 2020 - Sep 20",
-            "Article Writing Competition 2020 on Biological Invasion/Invasive Species in Your Locality - Sep 20"
-        ];
-
+        var texts = new Array(4);
+        i = 0;
+        <c:forEach items="${summary}" var="sum">
+            texts[i] = "${sum}";
+            i++;
+        </c:forEach>
         for(var i=0;i<4;i++)
         {
             document.getElementById("img"+(i+1)).src = images[i];
