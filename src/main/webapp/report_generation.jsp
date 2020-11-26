@@ -57,6 +57,12 @@
         table tr:hover {background-color: #888;}
     </style>
 </head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+  <%
+            String[][] data = (String[][])application.getAttribute("data");
+            request.setAttribute("data",data);
+  %>
 <body>
     <script>
         $(function () {
@@ -106,15 +112,27 @@
     </div> -->
 
     <script type="text/javascript">
-        var data = 
-        [
-        ['CB.EN.U4EIE17003','Venkata Sai Naveen Chandra Adabala','2017-2021','BTech','Student'],
-        ['CB.EN.U4EIE17050','V.Thamarai Selvi','2017-2021','BTech','Student'],
-        ['BL.EN.U4EEE17067','Dileep Kumar Reddy Vayalpati','2017-2021','BTech','Student'],
-        ['CB.EN.U4CSE17448','Prabakaran A S','2017-2021','BTech','Student'],
-        ['CB.EN.U4CSE17425','B Janavi','2017-2021','BTech','Student']
-        ];
-        
+        // var data = 
+        // [
+        // ['CB.EN.U4EIE17003','Venkata Sai Naveen Chandra Adabala','2017-2021','BTech','Student'],
+        // ['CB.EN.U4EIE17050','V.Thamarai Selvi','2017-2021','BTech','Student'],
+        // ['BL.EN.U4EEE17067','Dileep Kumar Reddy Vayalpati','2017-2021','BTech','Student'],
+        // ['CB.EN.U4CSE17448','Prabakaran A S','2017-2021','BTech','Student'],
+        // ['CB.EN.U4CSE17425','B Janavi','2017-2021','BTech','Student']
+        // ];
+        console.log(${fn:length(data)});
+        var data = new Array(${fn:length(data)});
+        var i = 0;
+        var j = 0;
+        <c:forEach items="${data}" var="di">
+            data[i] = new Array(${fn:length(di)});
+            j = 0;
+            <c:forEach items="${di}" var="dij">
+                data[i][j] = "${dij}";
+                j++;
+            </c:forEach>
+            i++;
+        </c:forEach>
         /*
 
         ['CB.EN.U4ECE17020','Harish Annamalai .P','2021','BTech','Student'],

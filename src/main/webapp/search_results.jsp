@@ -28,6 +28,18 @@
 	</style>
 
 </head>
+<%@ page import= "java.util.ArrayList" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+  <%
+		String[][] data = {
+			{"CB.EN.U4EIE17003","Venkata Sai Naveen Chandra Adabala","2017-2021","BTech","Student"},
+			{"CB.EN.U4EIE17050","V.Thamarai Selvi","2017-2021","BTech","Student"},
+			{"BL.EN.U4EEE17067","Dileep Kumar Reddy Vayalpati","2017-2021","BTech","Student"},
+			{"CB.EN.U4CSE17448","Prabakaran A S","2017-2021","BTech","Student"},
+			{"CB.EN.U4CSE17425","B Janavi","2017-2021","BTech","Student"}
+			};
+  		application.setAttribute("data",data);
+  %>
 <body>
 	<header>
     	<div id="nav-placeholder"> </div>
