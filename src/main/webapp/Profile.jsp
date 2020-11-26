@@ -89,7 +89,7 @@
     <div class="container bootstrap snippet myclass">
     <div class="row">
       <div class="col-sm-10">
-        <h1>{$userLogged.getFirstName()} {$userLogged.getLastName()}</h1>
+        <h1>${userLogged.getFirstName()} ${userLogged.getLastName()}</h1>
       </div>
     </div>
     <div class="row">
