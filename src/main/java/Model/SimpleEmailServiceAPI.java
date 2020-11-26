@@ -1,7 +1,7 @@
 package Model;
 import java.io.IOException;
 import com.amazonaws.AmazonClientException;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
@@ -46,15 +46,13 @@ public class SimpleEmailServiceAPI
              * TransferManager manages a pool of threads, so we create a
              * single instance and share it throughout our application.
              */
-            ProfileCredentialsProvider credentialsProvider = new ProfileCredentialsProvider();
+            InstanceProfileCredentialsProvider credentialsProvider = new InstanceProfileCredentialsProvider();
             try {
                 credentialsProvider.getCredentials();
             } catch (Exception e) {
                 throw new AmazonClientException(
-                        "Cannot load the credentials from the credential profiles file. " +
-                        "Please make sure that your credentials file is at the correct " +
-                        "location (C:\\Users\\hp\\.aws\\credentials), and is in valid format.",
-                        e);
+                        "Cannot load the credentials from the credential profiles file. "
+                        );
                
             }
 
