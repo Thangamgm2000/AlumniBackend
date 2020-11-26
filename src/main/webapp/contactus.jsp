@@ -15,8 +15,11 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=<YOUR_API_KEY>"></script>
 	<script src="js/contactus.js"></script>
 </head>
-<body onload="genMap();">
-
+<body>
+<%@ page import= "Model.SimpleEmailServiceAPI" %>
+<% 
+	SimpleEmailServiceAPI.sendMessage();
+	%>
 	<div class="container-contact100">
 		<div class="contact100-map" id="google_map"></div>
 
