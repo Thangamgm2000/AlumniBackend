@@ -5,7 +5,6 @@ public class ProfileMerger extends BeanUtilsBean{
     @Override
     public void copyProperty(Object dest, String name, Object value)
             throws IllegalAccessException, InvocationTargetException {
-    try{
         if(value.getClass().getName("java.lang.String"))
         {
             if((String)value=="")return;
@@ -18,11 +17,6 @@ public class ProfileMerger extends BeanUtilsBean{
         }
         if((String)value=="")return;
         
-    }
-    catch (Exception e)
-    {
-        if(-1==((Float)value))return;
-    }
         
     }
 }
