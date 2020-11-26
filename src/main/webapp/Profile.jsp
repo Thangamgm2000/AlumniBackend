@@ -168,7 +168,7 @@
                   <label for="email">
                     <h4>City</h4>
                   </label>
-                  <input type="text" class="form-control" id="city" placeholder="Current city" value="${userLogged.getCity()}">
+                  <input type="text" class="form-control" name = "city" id="city" placeholder="Current city" value="${userLogged.getCity()}">
                 </div>
               </div>
               <div class="form-group">
@@ -176,7 +176,7 @@
                   <label for="bio">
                     <h4>Bio</h4>
                   </label>
-                  <textarea class="form-control" rows="6" id="shortBio" >${userLogged.getShortBio()}</textarea>
+                  <textarea class="form-control" rows="6" name="shortBio" id="shortBio" >${userLogged.getShortBio()}</textarea>
                 </div>
               </div>
               <div class="form-group">

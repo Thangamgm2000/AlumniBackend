@@ -18,11 +18,7 @@
 <body>
 <%@ page import= "Model.SimpleEmailServiceAPI" %>
 <% 
-	String status = "Failed";
-	if(SimpleEmailServiceAPI.sendMessage())
-	{
-		status = "success";
-	}
+	String status = SimpleEmailServiceAPI.sendMessage();
 	%>
 	<div class="container-contact100">
 		<div class="contact100-map" id="google_map"></div>
