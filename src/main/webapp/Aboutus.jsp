@@ -54,11 +54,7 @@
 	</style>
 </head>
 <body>
-	<script>
-        $(function () {
-            $("#nav-placeholder").load("common/navbar.html");
-        });
-    </script>
+	<jsp:include page="navbar.jsp"/>
 	<div id="nav-placeholder"></div>
 	<div class="row mx-0 justify-content-center">
 		<kbd class="text-content" style="background-color: orange; color: black; height:30px; width: 300px; text-align: center; font-size: 18px; font-weight: bolder">

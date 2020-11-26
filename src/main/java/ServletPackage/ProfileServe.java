@@ -38,7 +38,7 @@ public class ProfileServe extends HttpServlet {
         	rd.forward(request, response);
             response.sendRedirect("Profile.jsp");
             }  
-            else{   
+            else{
                 response.sendRedirect("login_page.jsp");  
             }  
 	}
