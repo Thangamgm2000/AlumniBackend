@@ -6,8 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;  
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletResponse;
-
+import Model.UserBase;
+import Model.DataConnector;
 /**
  * Servlet implementation class ProfileServe
  */
@@ -29,7 +31,11 @@ public class ProfileServe extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession(false);
 		if(session!=null && session.getAttribute("rollNumber")!=null){  
-            String rollNumber=(String)session.getAttribute("rollNumber");  
+			String rollNumber=(String)session.getAttribute("rollNumber");
+			UserBase u=DataConnector.getRecordById(rollNumber);
+			session.setAttribute("userLogged",u);
+			RequestDispatcher rd = request.getRequestDispatcher("Profile.jsp");
+        	rd.forward(request, response);
             response.sendRedirect("Profile.jsp");
             }  
             else{   

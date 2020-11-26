@@ -70,7 +70,7 @@
   <body>
   <%@ page import= "Model.DataConnector,Model.UserBase,java.util.List,Model.AchievementsBase,Model.JobsBase" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<%  
+	<%--  
 	String rollNumber = "CB.EN.P2EIE14258";
   UserBase u=DataConnector.getRecordById(rollNumber);
   List<AchievementsBase> achievements= u.getAchievements();
@@ -79,7 +79,7 @@
   int jobsSize = jobs.size();
   request.setAttribute("achievements",achievements);
   request.setAttribute("jobs",jobs);
-	%>
+	--%>
     <div>
       <button class="btn btn-warning btn-lg" style="margin: 15px;" onclick="window.history.back()">
         Go Back
@@ -89,7 +89,7 @@
     <div class="container bootstrap snippet myclass">
     <div class="row">
       <div class="col-sm-10">
-        <h1><%=u.getFirstName() + " "+ u.getLastName() %></h1>
+        <h1>{$userLogged.getFirstName()} {$userLogged.getLastName()}</h1>
       </div>
     </div>
     <div class="row">
@@ -102,7 +102,7 @@
         </hr><br>
         <div class="panel panel-default">
           <div class="panel-heading">Website/ Social media/ Linkedin </div>
-          <div class="panel-body"><a href="Aboutus.jsp"> <%=u.getFirstName()%>'s profile</a></div>
+          <div class="panel-body"><a href="Aboutus.jsp"> ${userLogged.getFirstName()}'s profile</a></div>
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">Social Media</div>
@@ -128,7 +128,7 @@
                   <label for="first_name">
                     <h4>First name</h4>
                   </label>
-                  <input type="text" class="form-control" name="firstName" id="first_name" placeholder="first name" value="<%=u.getFirstName()%>">
+                  <input type="text" class="form-control" name="firstName" id="first_name" placeholder="first name" value="${userLogged.getFirstName()}">
                 </div>
               </div>
               <div class="form-group">
@@ -136,7 +136,7 @@
                   <label for="last_name">
                     <h4>Last name</h4>
                   </label>
-                  <input type="text" class="form-control" name="lastName" id="last_name" placeholder="last name" value="<%=u.getLastName() %>">
+                  <input type="text" class="form-control" name="lastName" id="last_name" placeholder="last name" value="${userLogged.getLastName()}">
                 </div>
               </div>
               <div class="form-group">
@@ -144,7 +144,7 @@
                   <label for="email">
                     <h4>Official Email address</h4>
                   </label>
-                  <input type="email" class="form-control" name="officialEmail" id="off_email" placeholder="xyz@yourorg.com" value="<%=u.getOfficialEmail() %>">
+                  <input type="email" class="form-control" name="officialEmail" id="off_email" placeholder="xyz@yourorg.com" value="${userLogged.getOfficialEmail()}">
                 </div>
               </div>
               <div class="form-group">
@@ -152,7 +152,7 @@
                   <label for="email">
                     <h4>Personal Email address</h4>
                   </label>
-                  <input type="email" class="form-control" name="personalEmail" id="email" placeholder="your email id" value="<%=u.getPersonalEmail() %>">
+                  <input type="email" class="form-control" name="personalEmail" id="email" placeholder="your email id" value="${userLogged.getPersonalEmail()}">
                 </div>
               </div>
               <div class="form-group">
@@ -160,7 +160,7 @@
                   <label for="mobile">
                     <h4>Mobile number</h4>
                   </label>
-                  <input type="text" class="form-control" name="mobileNumber" id="mobile" placeholder="enter your mobile number with countrycode" value="<%=u.getMobileNumber() %>">
+                  <input type="text" class="form-control" name="mobileNumber" id="mobile" placeholder="enter your mobile number with countrycode" value="${userLogged.getMobileNumber()}">
                 </div>
               </div>
               <div class="form-group">
@@ -168,7 +168,7 @@
                   <label for="email">
                     <h4>City</h4>
                   </label>
-                  <input type="text" class="form-control" id="city" placeholder="Current city" value="<%=u.getCity() %>">
+                  <input type="text" class="form-control" id="city" placeholder="Current city" value="${userLogged.getCity()}">
                 </div>
               </div>
               <div class="form-group">
@@ -176,7 +176,7 @@
                   <label for="bio">
                     <h4>Bio</h4>
                   </label>
-                  <textarea class="form-control" rows="6" id="shortBio" ><%=u.getShortBio() %></textarea>
+                  <textarea class="form-control" rows="6" id="shortBio" >${userLogged.getShortBio()}</textarea>
                 </div>
               </div>
               <div class="form-group">
@@ -203,7 +203,7 @@
                   <label for="course">
                     <h4>Course enrolled</h4>
                   </label>
-                  <input type="text" class="form-control" name="courseEnrolled" id="course" placeholder="eg. BTech" value="<%=u.getCourseEnrolled() %>">
+                  <input type="text" class="form-control" name="courseEnrolled" id="course" placeholder="eg. BTech" value="${userLogged.getCourseEnrolled()}">
                 </div>
               </div>
               <div class="form-group">
@@ -211,7 +211,7 @@
                   <label for="Batch">
                     <h4>Academic Batch</h4>
                   </label>
-                  <input type="text" class="form-control" name="academicBatch" id="batch" placeholder="starting_year - ending_year" value="<%=u.getAcademicBatch() %>">
+                  <input type="text" class="form-control" name="academicBatch" id="batch" placeholder="starting_year - ending_year" value="${userLogged.getAcademicBatch()}">
                 </div>
               </div>
               <div class="form-group">
@@ -219,7 +219,7 @@
                   <label for="Department">
                     <h4>Department</h4>
                   </label>
-                  <input type="text" class="form-control" name="dept" id="dept_name" placeholder="Department name" value="<%=u.getDept() %>">
+                  <input type="text" class="form-control" name="dept" id="dept_name" placeholder="Department name" value="${userLogged.getDept()}">
                 </div>
               </div>
               <div class="form-group">
@@ -227,7 +227,7 @@
                   <label for="roll_number">
                     <h4>Rollnumber</h4>
                   </label>
-                  <input type="text" class="form-control" name="rollNumber" id="roll_no" placeholder="eg. CB.EN.U4CSE16253" value="<%=u.getRollNumber() %>">
+                  <input type="text" class="form-control" name="rollNumber" id="roll_no" placeholder="eg. CB.EN.U4CSE16253" value="${userLogged.getRollNumber()}">
                 </div>
               </div>
               <div class="form-group">
@@ -235,7 +235,7 @@
                   <label for="advisor">
                     <h4>Academic Advisor</h4>
                   </label>
-                  <input type="text" class="form-control" name="academicAdvisor" id="advisor" placeholder="Name of advisor" value="<%=u.getAcademicAdvisor() %>">
+                  <input type="text" class="form-control" name="academicAdvisor" id="advisor" placeholder="Name of advisor" value="${userLogged.getAcademicAdvisor()}">
                 </div>
               </div>
               <div class="form-group">
@@ -243,7 +243,7 @@
                   <label for="cgpa">
                     <h4>CGPA</h4>
                   </label>
-                  <input type="text" class="form-control" id="cgpa" name="cgpa" placeholder="CGPA in scale of 10" value="<%=u.getCgpa() %>">
+                  <input type="text" class="form-control" id="cgpa" name="cgpa" placeholder="CGPA in scale of 10" value="${userLogged.getCgpa()}">
                 </div>
               </div>
               <div class="form-group">
@@ -265,7 +265,7 @@
             <h2>Academic achievements</h2>
             <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal" >Add an Academic achivement</button>
             <font color="black">
-            <c:forEach items="${achievements}" var="ach">
+            <c:forEach items="${userLogged.achievements}" var="ach">
             <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
               <div class="panel-heading">${ach.getName()}</div>
               <div class="panel-body">${ach.getDateOfAccomplishment()}</div>
@@ -359,7 +359,7 @@
             <h2>Work experience</h2>
             <button type="button" id="add-career" class="btn btn-info btn-lg" data-toggle="modal" data-target="#careerModal">Add a position</button>
             <font color="black">
-            <c:forEach items="${jobs}" var="job">
+            <c:forEach items="${userLogged.jobs}" var="job">
             <div class="panel panel-info pannel_style" data-href='#careerModal' id='achievement-pannel'>
               <div class="panel-heading">${job.getRoleName()}</div>
               <div class="panel-body">
