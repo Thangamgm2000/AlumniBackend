@@ -16,10 +16,7 @@
 	<script src="js/contactus.js"></script>
 </head>
 <body>
-<%@ page import= "Model.SimpleEmailServiceAPI" %>
-<% 
-	String status = SimpleEmailServiceAPI.sendMessage();
-	%>
+<jsp:include page="navbar.jsp"/>
 	<div class="container-contact100">
 		<div class="contact100-map" id="google_map"></div>
 
@@ -29,13 +26,13 @@
 		</div>
 
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form class="contact100-form validate-form" action="/HandleContactRequest" method="post" id="contactusForm">
 				<span class="contact100-form-title">
 					Contact Us
 				</span>
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<span class="label-input100">Name <%=status %></span>
+					<span class="label-input100">Name</span>
 					<input class="input100" type="text" name="name" placeholder="Name...">
 					<!-- <span class="focus-input100"></span> -->
 				</div>

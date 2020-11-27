@@ -1,3 +1,5 @@
 /.idea
 /target
 /ROOT.iml
+/META-INF
+/lib
