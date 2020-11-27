@@ -21,6 +21,24 @@ public class EventsManager {
 		}
 		return connection;
     }
+    public static ArrayList<EventData> getData()
+    {
+        ArrayList<EventData> allData = new ArrayList<EventData>();
+        try 
+        {
+            Connection con = connect();
+            PreparedStatement ps=con.prepareStatement("select * from upcoming_events order by event_id limit 4");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                EventData e = new EventData();
+                e.setImage("img/"+rs.getString("image_link"));
+                e.setLink(rs.getString("full_link"));
+                e.setSummary(rs.getString("summary"));
+                allData.add(e);
+            }
+        }catch(Exception e){System.out.println(e);}  
+        return allData;
+    }
     public static ArrayList<String> getImages(){
         ArrayList<String> images = new ArrayList<String>();
         try {

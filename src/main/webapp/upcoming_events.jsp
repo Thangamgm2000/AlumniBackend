@@ -74,16 +74,15 @@
     </style>
 </head>
 <body>
-    <%@ page import= "Model.EventsManager,java.util.ArrayList" %>
+    <%@ page import= "Model.EventsManager,java.util.ArrayList,Model.EventData" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <% 
-        ArrayList<String> images = EventsManager.getImages(); 
-        System.out.println(images.size());
-        ArrayList<String> links = EventsManager.getLink();
-        ArrayList<String> summary = EventsManager.getSummary();
-        request.setAttribute("images",images);
-        request.setAttribute("links",links);
-        request.setAttribute("summary",summary);
+    <%
+        if(session.getAttribute("eventData")==null)
+        {
+            response.sendRedirect("/InitEvents");
+        }
+        ArrayList<EventData> eventData= (ArrayList<EventData>)session.getAttribute("eventData");
+        request.setAttribute("eventData",eventData); 
     %>
     <jsp:include page="navbar.jsp"/>
     
@@ -126,22 +125,22 @@
         var images = new Array(4);
         var i = 0;
         console.log(images.length);
-        <c:forEach items="${images}" var="img">
-            images[i] = "${img}";
+        <c:forEach items="${eventData}" var="e">
+            images[i] = "${e.getImage()}";
             i++;
         </c:forEach>
 
         var links = new Array(4);
         i = 0;
-        <c:forEach items="${links}" var="link">
-            links[i] = "${link}";
+        <c:forEach items="${eventData}" var="e">
+            links[i] = "${e.getLink()}";
             i++;
         </c:forEach>
 
         var texts = new Array(4);
         i = 0;
-        <c:forEach items="${summary}" var="sum">
-            texts[i] = "${sum}";
+        <c:forEach items="${eventData}" var="e">
+            texts[i] = "${e.getSummary()}";
             i++;
         </c:forEach>
         for(var i=0;i<4;i++)
