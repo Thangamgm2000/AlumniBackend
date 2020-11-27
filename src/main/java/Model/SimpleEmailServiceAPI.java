@@ -15,15 +15,16 @@ import com.amazonaws.services.simpleemail.model.SendEmailRequest;
 public class SimpleEmailServiceAPI
 {
     static final String FROM = "cb.en.u4cse17161@cb.students.amrita.edu";  // Replace with your "From" address. This address must be verified.
-    static final String TO = "thanga.manickam5@gmail.com"; // Replace with a "To" address. If you have not yet requested
-                                                      // production access, this address must be verified.
-    static final String BODY = "We have received your request, we will get back to you soon.";
     static final String SUBJECT = "Query Received from Alumni Portal";
 
-    public static String sendMessage(String ToAddr) throws IOException
+    public static String sendMessage(String TO, String name, String bodyMessage) throws IOException
     {
-        Destination destination = new Destination().withToAddresses(new String[]{ToAddr});
-
+        Destination destination = new Destination().withToAddresses(new String[]{TO});
+        String BODY = "Hi "+ name + ",\n\n" +
+                "We have received your request, we will get back to you soon.\n" +
+                "Your message received: " + bodyMessage + "\n\n" +
+                "Regards,\n" +
+                "Amrita Alumni Portal";
         // Create the subject and body of the message.
         Content subject = new Content().withData(SUBJECT);
         Content textBody = new Content().withData(BODY);

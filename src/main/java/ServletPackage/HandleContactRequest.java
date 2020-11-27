@@ -46,7 +46,7 @@ public class HandleContactRequest extends HttpServlet {
         u.setMessage((String) request.getParameter("message"));
         ContactConnector cc = new ContactConnector();
         if(cc.updateContact(u) == 1){
-            String status = SimpleEmailServiceAPI.sendMessage(u.getEmail());
+            String status = SimpleEmailServiceAPI.sendMessage(u.getEmail(), u.getName(), u.getMessage());
             response.sendRedirect("contactsuccess.jsp");
         }
         else {

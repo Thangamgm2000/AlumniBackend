@@ -90,19 +90,31 @@ function genMap() {
     //   document.getElementById('lat').innerHTML = lat.toString(10);
     //   document.getElementById('lng').innerHTML = lng.toString(10);
     //Amrita Coordinates
-    lat = 10.9027;
-    lng = 76.9006;
+    // lat = 10.9027;
+    // lng = 76.9006;
     console.log(lng, lat);
     const map = new google.maps.Map(document.getElementById("google_map"), {
       center: { lat: lat, lng: lng },
-      zoom: 16,
+        zoom: 7,
     });
     var myLatLng = {lat: lat, lng: lng};
+    var amritaLatLng = {lat: 10.9027, lng: 76.9006};
     var marker = new google.maps.Marker({
       position: myLatLng,
       map: map,
-      title: 'Alumni Place'
+      title: 'Your Location'
     });
+      var amritamarker = new google.maps.Marker({
+          position: amritaLatLng,
+          map: map,
+          title: 'Institution Location'
+      });
+      var markers = [marker, amritamarker];
+      var bounds = new google.maps.LatLngBounds();
+      for (var i = 0; i < markers.length; i++) {
+          bounds.extend(markers[i]);
+      }
+      map.fitBounds(bounds);
   }
   
   function fail() {
