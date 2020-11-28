@@ -79,7 +79,7 @@ public class PerformSearch {
                 currObj.setLatestJob(rs.getString("Role"));
                 currObj.setRollNumber(rs.getString("RollNumber"));
                 currObj.setProfilePic(PerformSearch.profPicSearch(con,currObj.getRollNumber()));
-                currObj.setProfileLink("#");
+                currObj.setProfileLink("/Profile/"+currObj.getRollNumber());
                 myResults.add(currObj);
             }
             con.close();

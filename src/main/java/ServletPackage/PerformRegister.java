@@ -8,7 +8,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpSession;  
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,8 +18,8 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Servlet implementation class PerformLogin
  */
-@WebServlet("/PerformLogin")
-public class PerformLogin extends HttpServlet {
+@WebServlet("/PerformRegister")
+public class PerformRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public static Connection connect()
@@ -45,9 +44,8 @@ public class PerformLogin extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PerformLogin() {
+    public PerformRegister() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -85,23 +83,48 @@ public class PerformLogin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Connection con = connect();
-			String rno = request.getParameter("RollNumber");
-			PreparedStatement ps = con.prepareStatement("select password_hash from credentials where RollNumber=?");
-			ps.setString(1,rno);
-			ResultSet rs = ps.executeQuery();
-			PrintWriter out = response.getWriter();  
-			if (rs.next()) {
-				if (rs.getString("password_hash").equals(getMd5(request.getParameter("password")))) {
-					HttpSession session=request.getSession(); 
-					session.setAttribute("rollNumber", rno);
-					response.sendRedirect("index.jsp");
-				}
-			}
-			else {
-				out.write("<div class=\"alert alert-danger\">Username or Password Incorrect!</div>");
-				RequestDispatcher rd = request.getRequestDispatcher("login_page.jsp");
-				rd.include(request, response);
-			}
+            String rno = request.getParameter("RollNumber");
+            PreparedStatement query = con.prepareStatement("select password_hash from credentials where RollNumber=?");
+            query.setString(1,rno);
+            ResultSet rs = query.executeQuery();
+            if (rs.next()) {
+                PrintWriter out = response.getWriter();
+
+                out.write("<div class=\"alert alert-danger\">User ALREADY EXISTS!</div>");
+                RequestDispatcher rd = request.getRequestDispatcher("register_page.jsp");
+                rd.include(request, response);
+            }
+            else {
+                PreparedStatement ps = con.prepareStatement("insert into credentials values (?,?)");
+                ps.setString(1,rno);
+                System.out.println(rno + ":" + request.getParameter("password"));
+                ps.setString(2,getMd5(request.getParameter("password")));
+                ps.executeUpdate();
+
+                String sql = "insert into profile_home_academic(FirstName,LastName,OfficialEmail,MobileNumber,"
+                + "CourseEnrolled,AdacemicBatch,Department,RollNumber)"
+                +" values (?,?,?,?,?,?,?,?)";
+
+                ps = con.prepareStatement(sql);
+
+                ps.setString(1, request.getParameter("FullName").split(" ")[0]);
+                ps.setString(2, request.getParameter("FullName").split(" ")[1]);
+                ps.setString(3, request.getParameter("OfficialEmail"));
+                ps.setString(4, request.getParameter("MobileNumber"));
+                ps.setString(5, request.getParameter("CourseEnrolled"));
+                ps.setString(6, request.getParameter("AcademicBatch"));
+                ps.setString(7, request.getParameter("Department"));
+                ps.setString(8, request.getParameter("RollNumber"));
+
+                ps.executeUpdate();
+
+                PrintWriter out = response.getWriter();
+
+                out.write("<div class=\"alert alert-success\">Registered Successfully, Please Login</div>");
+                RequestDispatcher rd = request.getRequestDispatcher("login_page.jsp");
+                rd.include(request, response);
+            }
+			
 			
 		}
 		catch (Exception e) {e.printStackTrace();}
@@ -111,8 +134,8 @@ public class PerformLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
 }
+

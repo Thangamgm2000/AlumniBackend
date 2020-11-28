@@ -36,7 +36,6 @@ public class ProfileServe extends HttpServlet {
 			session.setAttribute("userLogged",u);
 			RequestDispatcher rd = request.getRequestDispatcher("Profile.jsp");
         	rd.forward(request, response);
-            response.sendRedirect("Profile.jsp");
             }  
             else{
                 response.sendRedirect("login_page.jsp");  

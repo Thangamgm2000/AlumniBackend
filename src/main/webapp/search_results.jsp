@@ -52,7 +52,7 @@
 			<c:forEach items="${searchResults}" var="res">
 				<div class="card flex-row flex-wrap">
 					<div class="card-header border-0">
-						<img src="${res.getProfilePic()}" alt="">
+						<img src="${res.getProfilePic()}" alt="" style="width: 200px; height: 200px;">
 					</div>
 					<div class="card-block px-2" style="color: black;">
 						<h4 class="card-title mt-3	">${res.getAnyName()}</h4>
