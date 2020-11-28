@@ -98,7 +98,7 @@
         <div class="text-center">
           <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
           <h6>Update your profile picture</h6>
-          <form action="/AlumniNcpBackend/ImageHandler" method="post" enctype="multipart/form-data" id="imageForm">
+          <form action="/ImageHandler" method="post" enctype="multipart/form-data" id="imageForm">
           <input type="file" name="imageFile" class="text-center center-block file-upload">
           <span id="upload-error" class="error"></span>
           </form>
