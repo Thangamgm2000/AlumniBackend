@@ -105,22 +105,17 @@ public class ImageHandler extends HttpServlet {
 	        //Get Image Name
 	        String imageName = "MyimgUploaded.jpg";
 	         
-	        if(validateImage(imageName)){
-	            try{
+	        if(validateImage(imageName)){	            
 	                part.write(imagePath + File.separator + imageName);
                     out.print("<img src=\"images/"+imageName+"\" >");
-                    String fileObjKeyName = "17161file";
+                    String fileObjKeyName = "MyimgUploaded.jpg";
                     String imgfileName = request.getServletContext().getRealPath("images/MyimgUploaded.jpg");
                     PutObjectRequest s3request = new PutObjectRequest(bucket_name, fileObjKeyName, new File(imgfileName));
                     ObjectMetadata metadata = new ObjectMetadata();
                     metadata.setContentType("image/jpg");
                     s3.putObject(s3request);
 	                //System.out.println("<img src=\"images/"+imageName+"\" >");
-	            }catch (Exception ex) {
-	                out.print("Exception:"+ex.getMessage()+"</h1>");
-	               //System.out.println(""+ex);
-	               //ex.printStackTrace();
-	            }
+	            
 	        }else{
 	            out.print("<h1>Invalid Image Format</h1>");
 	            //System.out.println("<h1>Invalid Image Format</h1>");
