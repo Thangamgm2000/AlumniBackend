@@ -89,15 +89,15 @@ public class ImageHandler extends HttpServlet {
             // Getting File data
             String bucket_name = "amrita-alumni-portal.io";
             Part part = request.getPart("imageFile");
-            /*InstanceProfileCredentialsProvider credentialsProvider = new InstanceProfileCredentialsProvider();
+            InstanceProfileCredentialsProvider credentialsProvider = new InstanceProfileCredentialsProvider();
             try {
                 credentialsProvider.getCredentials();
             } catch (Exception e) {
                 throw new AmazonClientException(
                         "Cannot load the credentials from the credential profiles file.");
-            }*/
+            }
             final AmazonS3 s3 = AmazonS3ClientBuilder.standard()
-                    //.withCredentials(credentialsProvider)
+                    .withCredentials(credentialsProvider)
                     .withRegion("us-east-2").build();
 	        // Getting Application Path
 	        String appPath = request.getServletContext().getRealPath("");
