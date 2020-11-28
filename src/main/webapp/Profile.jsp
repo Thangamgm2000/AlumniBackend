@@ -100,6 +100,7 @@
           <h6>Update your profile picture</h6>
           <form action="/ImageHandler" method="post" enctype="multipart/form-data" id="imageForm">
           <input type="file" name="imageFile" class="text-center center-block file-upload">
+          <button type="submit">Upload image</button>
           <span id="upload-error" class="error"></span>
           </form>
         </div>
