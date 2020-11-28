@@ -21,6 +21,8 @@ import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 
 /**
  * Servlet implementation class ImageHandler
@@ -112,7 +114,7 @@ public class ImageHandler extends HttpServlet {
                     PutObjectRequest s3request = new PutObjectRequest(bucket_name, fileObjKeyName, new File(imgfileName));
                     ObjectMetadata metadata = new ObjectMetadata();
                     metadata.setContentType("image/jpg");
-                    s3Client.putObject(s3request);
+                    s3.putObject(s3request);
 	                //System.out.println("<img src=\"images/"+imageName+"\" >");
 	            }catch (Exception ex) {
 	                out.print("Exception:"+ex.getMessage()+"</h1>");
