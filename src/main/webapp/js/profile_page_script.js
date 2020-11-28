@@ -50,15 +50,7 @@ $(document).ready(function() {
     var saveButtons = $('button[name ="save-button"]')
     var resetButtons = $('button[name ="reset-button"]')
     var cancelButtons = $('button[name ="cancel-button"]');
-    $('#imageForm').ajaxForm({
-            success: function(msg) {
-                alert("File has been uploaded successfully");
-            },
-            error: function(msg) {
-                $("#upload-error").text("Couldn't upload file");
-                console.log(msg);
-            }
-        });
+    
     $(':input').attr('readonly','readonly');
     saveButtons.hide()
     resetButtons.hide();
