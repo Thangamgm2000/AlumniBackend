@@ -59,10 +59,13 @@
 </head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-  <%
-            String[][] data = (String[][])application.getAttribute("data");
-            request.setAttribute("data",data);
-  %>
+
+<%@ page import="Model.SearchBase,java.util.ArrayList" %>
+<%
+    String[][] data = SearchBase.getRecords((ArrayList<SearchBase>)request.getSession(false).getAttribute("searchResults"));
+    request.setAttribute("data", data);
+%>
+
 <body>
     <jsp:include page="navbar.jsp"/>
     
@@ -115,8 +118,7 @@
         // ['CB.EN.U4CSE17448','Prabakaran A S','2017-2021','BTech','Student'],
         // ['CB.EN.U4CSE17425','B Janavi','2017-2021','BTech','Student']
         // ];
-        console.log(${fn:length(data)});
-        var data = new Array(${fn:length(data)});
+        var data = new Array(parseInt("${fn:length(data)}"));
         var i = 0;
         var j = 0;
         <c:forEach items="${data}" var="di">
@@ -128,6 +130,7 @@
             </c:forEach>
             i++;
         </c:forEach>
+
         /*
 
         ['CB.EN.U4ECE17020','Harish Annamalai .P','2021','BTech','Student'],
@@ -143,11 +146,11 @@
 
         */
 
-        document.getElementById("num").innerHTML = data.length+" records fetched";
-        
+        document.getElementById("num").innerHTML = data.length+" record(s) fetched";
+
         var table = document.getElementById("rptTable");
         var i;
-
+        
         for(i=0;i<data.length;i++)
         {
             var row = table.insertRow(i+1);

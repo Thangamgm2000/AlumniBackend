@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ page import="Model.SearchBase,Model.PerformSearch,java.util.ArrayList" %>
+
+<jsp:useBean id="searchObj" class="Model.SearchBase"></jsp:useBean>
+<jsp:setProperty property="*" name="searchObj" />
+
+<% 
+	ArrayList<SearchBase> searchResults = PerformSearch.dbSearch(searchObj);
+	session.setAttribute("searchResults", searchResults);
+%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,106 +38,35 @@
 	</style>
 
 </head>
-<%@ page import= "java.util.ArrayList" %>
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-  <%
-		String[][] data = {
-			{"CB.EN.U4EIE17003","Venkata Sai Naveen Chandra Adabala","2017-2021","BTech","Student"},
-			{"CB.EN.U4EIE17050","V.Thamarai Selvi","2017-2021","BTech","Student"},
-			{"BL.EN.U4EEE17067","Dileep Kumar Reddy Vayalpati","2017-2021","BTech","Student"},
-			{"CB.EN.U4CSE17448","Prabakaran A S","2017-2021","BTech","Student"},
-			{"CB.EN.U4CSE17425","B Janavi","2017-2021","BTech","Student"}
-			};
-  		application.setAttribute("data",data);
-  %>
+
 <body>
 	<header>
     	<div id="nav-placeholder"> </div>
 	</header>
 	<div class="card mx-auto mycard" style="width:1200px;">
 		<h4 class="card-header" style="border-bottom: 2px solid black">Search Results</h4>
+		
+		<a href="report_generation.jsp"><button type="button" class="btn btn-primary float-right m-2">Generate report</button></a>
 
 		<div class="card-body">
-			 <div class="card flex-row flex-wrap">
-		        <div class="card-header border-0">
-		            <img src="img/profile.jpg" alt="">
-		        </div>
-		        <div class="card-block px-2" style="color: black;">
-		            <h4 class="card-title mt-3	">Venkata Sai Naveen Chandra Adabala</h4>
-		            <p class="card-text">
-		            	Roll: CB.EN.U4EIE17003<br/>
-		            	Batch: 2017-2021<br/>
-		            	Course: BTech<br/>
-		            	Latest Profession: Student<br/>
-		            </p>
-		            <a href="#" class="btn btn-primary">Go to Profile</a>
-		        </div>
-		    </div>
-		    <br>
-		    <div class="card flex-row flex-wrap">
-		        <div class="card-header border-0">
-		            <img src="img/profile.jpg" alt="">
-		        </div>
-		        <div class="card-block px-2" style="color: black;">
-		            <h4 class="card-title mt-3	">V.Thamarai Selvi</h4>
-		            <p class="card-text">
-		            	Roll: CB.EN.U4EIE17050<br/>
-		            	Batch: 2017-2021<br/>
-		            	Course: BTech<br/>
-		            	Latest Profession: Student<br/>
-		            </p>
-		            <a href="#" class="btn btn-primary">Go to Profile</a>
-		        </div>
-		    </div>
-		    <br>
-		    <div class="card flex-row flex-wrap">
-		        <div class="card-header border-0">
-		            <img src="img/profile.jpg" alt="">
-		        </div>
-		        <div class="card-block px-2" style="color: black;">
-		            <h4 class="card-title mt-3	">Dileep Kumar Reddy Vayalpati</h4>
-		            <p class="card-text">
-		            	Roll: BL.EN.U4EEE17067<br/>
-		            	Batch: 2017-2021<br/>
-		            	Course: BTech<br/>
-		            	Latest Profession: Student<br/>
-		            </p>
-		            <a href="#" class="btn btn-primary">Go to Profile</a>
-		        </div>
-		    </div>
-		    <br>
-		    <div class="card flex-row flex-wrap">
-		        <div class="card-header border-0">
-		            <img src="img/profile.jpg" alt="">
-		        </div>
-		        <div class="card-block px-2" style="color: black;">
-		            <h4 class="card-title mt-3	">Prabakaran A S</h4>
-		            <p class="card-text">
-		            	Roll: CB.EN.U4CSE17448<br/>
-		            	Batch: 2017-2021<br/>
-		            	Course: BTech<br/>
-		            	Latest Profession: Student<br/>
-		            </p>
-		            <a href="#" class="btn btn-primary">Go to Profile</a>
-		        </div>
-		    </div>
-		    <br>
-		    <div class="card flex-row flex-wrap">
-		        <div class="card-header border-0">
-		            <img src="img/profile.jpg" alt="">
-		        </div>
-		        <div class="card-block px-2" style="color: black;">
-		            <h4 class="card-title mt-3	">B Janavi</h4>
-		            <p class="card-text">
-		            	Roll: CB.EN.U4CSE17425<br/>
-		            	Batch: 2017-2021<br/>
-		            	Course: BTech<br/>
-		            	Latest Profession: Student<br/>
-		            </p>
-		            <a href="#" class="btn btn-primary">Go to Profile</a>
-		        </div>
-		    </div>
-		    <br>
+			<c:forEach items="${searchResults}" var="res">
+				<div class="card flex-row flex-wrap">
+					<div class="card-header border-0">
+						<img src="${res.getProfilePic()}" alt="">
+					</div>
+					<div class="card-block px-2" style="color: black;">
+						<h4 class="card-title mt-3	">${res.getAnyName()}</h4>
+						<p class="card-text">
+							Roll: ${res.getRollNumber()}<br/>
+							Batch: ${res.getAcademicBatch()}<br/>
+							Course: ${res.getCourseEnrolled()}<br/>
+							Latest Profession: ${res.getLatestJob()}<br/>
+						</p>
+						<a href="${res.getProfileLink()}" class="btn btn-primary">Go to Profile</a>
+					</div>
+				</div>
+				<br>	
+			</c:forEach>
 		</div>
 	</div>
 </body>

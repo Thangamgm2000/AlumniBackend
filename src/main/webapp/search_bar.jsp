@@ -24,36 +24,38 @@
 	<div id="nav-placeholder"></div>
 	<div class="card mx-auto mycard" style="width:800px;">
 		<h4 class="card-header" style="border-bottom: 2px solid black">Search</h4>
-		<div class="card-body">
-			<p class="card-text">
-				Add additional search criteria with the <i class="fa fa-plus"></i> icon
-				<div id="barcontainer">
-					<div class="row mt-3" id="bar1">
-						<div class="col-3">
-							<select class="browser-default custom-select" onchange="onSelection(this)" style="border-radius: 10px;">
-								<option selected disabled hidden>Category</option>
-								<option value="roll">Roll Number</option>
-								<option value="name">Name</option>
-								<option value="batch">Batch</option>
-								<option value="course">Course</option>
-								<option value="company">Company</option>
-							</select>
-						</div>
-						<div class="col-8">
-							<input class="form-control" placeholder="Choose a category" style="border-radius: 10px;"/>
-						</div>
-						<div class="col-1" id="add-button">
-							<button class="btn btn-success" onclick="addBar()" style="border-radius: 20px;">
-								<i class="fa fa-plus"></i>
-							</button>
+		<form action="search_results.jsp" method="POST">
+			<div class="card-body">
+				<p class="card-text">
+					Add additional search criteria with the <i class="fa fa-plus"></i> icon
+					<div id="barcontainer">
+						<div class="row mt-3" id="bar1">
+							<div class="col-3">
+								<select id="term1" class="browser-default custom-select" onchange="onSelection(this)" style="border-radius: 10px;">
+									<option selected disabled hidden>Category</option>
+									<option value="roll">Roll Number</option>
+									<option value="name">Name</option>
+									<option value="batch">Batch</option>
+									<option value="course">Course</option>
+									<option value="company">Company</option>
+								</select>
+							</div>
+							<div class="col-8">
+								<input id="value1" class="form-control" placeholder="Choose a category" style="border-radius: 10px;"/>
+							</div>
+							<div class="col-1" id="add-button">
+								<button class="btn btn-success" onclick="addBar()" style="border-radius: 20px;">
+									<i class="fa fa-plus"></i>
+								</button>
+							</div>
 						</div>
 					</div>
+				</p>
+				<div class="d-flex justify-content-center mt-5" id="searchButton">
+					<button class="btn btn-primary" onclick="location.href='search_results.jsp'" style="float: right;">Search</button>
 				</div>
-			</p>
-			<div class="d-flex justify-content-center mt-5" id="searchButton">
-				<button class="btn btn-primary" onclick="location.href='search_results.jsp'" style="float: right;">Search</button>
 			</div>
-		</div>
+		</form>
 	</div>
 	<script type="text/javascript" src='js/search_bar.js'></script>
 </body>

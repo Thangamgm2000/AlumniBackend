@@ -15,7 +15,7 @@ function onSelection(selObj) {
 		newinp.className = "form-control";
 		newinp.placeholder = "Enter Roll Number";
 		newinp.style = "border-radius: 10px;"
-		newinp.id = "roll";
+		newinp.name = "rollNumber";
 		par.appendChild(newinp);
 	}
 	else if (selected === "name") {
@@ -24,7 +24,7 @@ function onSelection(selObj) {
 		newinp.className = "form-control";
 		newinp.placeholder = "Enter Name";
 		newinp.style = "border-radius: 10px;"
-		newinp.id = "name";
+		newinp.name = "anyName";
 		par.appendChild(newinp);
 	}
 	else if (selected === "batch") {
@@ -33,7 +33,7 @@ function onSelection(selObj) {
 		newinp.className = "form-control";
 		newinp.placeholder = "Enter Batch in 20xx-20xx format";
 		newinp.style = "border-radius: 10px;"
-		newinp.id = "batch";
+		newinp.name = "academicBatch";
 		par.appendChild(newinp);
 	}
 	else if (selected === "company") {
@@ -42,7 +42,7 @@ function onSelection(selObj) {
 		newinp.className = "form-control";
 		newinp.placeholder = "Enter Company";
 		newinp.style = "border-radius: 10px;"
-		newinp.id = "company";
+		newinp.name = "latestJob";
 		par.appendChild(newinp);
 	}
 	else if (selected === "course")
@@ -60,21 +60,26 @@ function onSelection(selObj) {
 		newinp.appendChild(cc);
 		
 		var btech = document.createElement("option");
-		btech.value = "btech"
-		btech.innerHTML = "B. Tech";
+		btech.value = "B.Tech"
+		btech.innerHTML = "B.Tech";
 
 		newinp.appendChild(btech);
 
 		var mtech = document.createElement("option");
-		mtech.value = "mtech"
-		mtech.innerHTML = "M. Tech";
+		mtech.value = "M.Tech"
+		mtech.innerHTML = "M.Tech";
 
 		newinp.style = "border-radius: 10px;"
 		newinp.appendChild(mtech);
-		newinp.id = "course";
+		newinp.name = "courseEnrolled";
 		par.appendChild(newinp);
 
 	}
+}
+
+function processNewBar(newbar,cnt) {
+	newbar.childNodes[1].childNodes[1].id = "term" + cnt;
+	return newbar;
 }
 
 
@@ -91,6 +96,7 @@ function addBar() {
 		newbar.className = "row mt-3";
 		newbar.id = "bar" + (addBar.counter + 1);
 		newbar.innerHTML = iht;
+		newbar = processNewBar(newbar, (addBar.counter + 1));
 		var plus = document.getElementById("add-button");
 		plus.parentNode.removeChild(plus);
 
