@@ -3,12 +3,15 @@ $(document).ready(function() {
     var readURL = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
+            var data = new FormData();
+			
             reader.onload = function (e) {
                 $('.avatar').attr('src', e.target.result);
+                
             }
-    
             reader.readAsDataURL(input.files[0]);
+            $('#imageForm').submit();
+            
         }
     }
     var getUrlParams = function()
@@ -46,7 +49,15 @@ $(document).ready(function() {
     var editButtons = $('button[name ="edit-button"]')
     var saveButtons = $('button[name ="save-button"]')
     var resetButtons = $('button[name ="reset-button"]')
-    var cancelButtons = $('button[name ="cancel-button"]')
+    var cancelButtons = $('button[name ="cancel-button"]');
+    $('#imageForm').ajaxForm({
+            success: function(msg) {
+                alert("File has been uploaded successfully");
+            },
+            error: function(msg) {
+                $("#upload-error").text("Couldn't upload file");
+            }
+        });
     $(':input').attr('readonly','readonly');
     saveButtons.hide()
     resetButtons.hide();

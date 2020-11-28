@@ -12,6 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="js/profile_page_script.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
     <style>
       .modal-footer {
       border-top: 0 none;
@@ -97,7 +98,10 @@
         <div class="text-center">
           <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
           <h6>Update your profile picture</h6>
-          <input type="file" class="text-center center-block file-upload">
+          <form action="/AlumniNcpBackend/ImageHandler" method="post" enctype="multipart/form-data" id="imageForm">
+          <input type="file" name="imageFile" class="text-center center-block file-upload">
+          <span id="upload-error" class="error"></span>
+          </form>
         </div>
         </hr><br>
         <div class="panel panel-default">
