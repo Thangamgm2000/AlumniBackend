@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
@@ -75,20 +76,28 @@ public class ImageHandler extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	       response.setContentType("text/html");
+			HttpSession session=request.getSession(false);
+			String rollNumber="";
+			if(session!=null && session.getAttribute("rollNumber")!=null){  
+				rollNumber=(String)session.getAttribute("rollNumber");
+				}  
+				else{
+					response.sendRedirect("login_page.jsp");  
+				}
+			response.setContentType("text/html");
 	        PrintWriter out = response.getWriter(); 
             // Getting File data
             String bucket_name = "amrita-alumni-portal.io";
             Part part = request.getPart("imageFile");
-            InstanceProfileCredentialsProvider credentialsProvider = new InstanceProfileCredentialsProvider();
+            /*InstanceProfileCredentialsProvider credentialsProvider = new InstanceProfileCredentialsProvider();
             try {
                 credentialsProvider.getCredentials();
             } catch (Exception e) {
                 throw new AmazonClientException(
                         "Cannot load the credentials from the credential profiles file.");
-            }
+            }*/
             final AmazonS3 s3 = AmazonS3ClientBuilder.standard()
-                    .withCredentials(credentialsProvider)
+                    //.withCredentials(credentialsProvider)
                     .withRegion("us-east-2").build();
 	        // Getting Application Path
 	        String appPath = request.getServletContext().getRealPath("");
@@ -108,7 +117,7 @@ public class ImageHandler extends HttpServlet {
 	            try{
 	                part.write(imagePath + File.separator + imageName);
                     out.print("<img src=\"images/"+imageName+"\" >");
-                    String fileObjKeyName = "MyimgUploaded.jpg";
+                    String fileObjKeyName = rollNumber+".jpg";
                     String imgfileName = request.getServletContext().getRealPath("images/MyimgUploaded.jpg");
                     PutObjectRequest s3request = new PutObjectRequest(bucket_name, fileObjKeyName, new File(imgfileName));
                     ObjectMetadata metadata = new ObjectMetadata();

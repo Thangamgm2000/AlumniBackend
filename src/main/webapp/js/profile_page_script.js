@@ -10,7 +10,7 @@ $(document).ready(function() {
                 
             }
             reader.readAsDataURL(input.files[0]);
-            //$('#imageForm').submit();
+            $('#imageForm').submit();
             
         }
     }
@@ -50,7 +50,14 @@ $(document).ready(function() {
     var saveButtons = $('button[name ="save-button"]')
     var resetButtons = $('button[name ="reset-button"]')
     var cancelButtons = $('button[name ="cancel-button"]');
-    
+    $('#imageForm').ajaxForm({
+        success: function(msg) {
+            alert("File has been uploaded successfully");
+        },
+        error: function(msg) {
+            $("#upload-error").text("Couldn't upload file");
+        }
+    });
     $(':input').attr('readonly','readonly');
     saveButtons.hide()
     resetButtons.hide();
