@@ -95,7 +95,6 @@ public class ImageHandler extends HttpServlet {
 	 
 	        // File path where all files will be stored
 	        String imagePath = appPath + "images";
-	 
 	        // Creates the file directory if it does not exists
 	        File fileDir = new File(imagePath);
 	        if (!fileDir.exists()) {
@@ -115,7 +114,7 @@ public class ImageHandler extends HttpServlet {
                     ObjectMetadata metadata = new ObjectMetadata();
                     metadata.setContentType("image/jpg");
                     s3.putObject(s3request);
-	                //System.out.println("<img src=\"images/"+imageName+"\" >");
+	                System.out.println("<img src=\"images/"+imageName+"\" >");
 	            }catch (Exception ex) {
 	                out.print("Exception: "+ex);
 	               //System.out.println(""+ex);
