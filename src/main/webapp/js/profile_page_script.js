@@ -56,6 +56,7 @@ $(document).ready(function() {
             },
             error: function(msg) {
                 $("#upload-error").text("Couldn't upload file");
+                console.log(msg);
             }
         });
     $(':input').attr('readonly','readonly');
