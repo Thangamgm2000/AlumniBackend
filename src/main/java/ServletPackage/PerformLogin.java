@@ -47,7 +47,6 @@ public class PerformLogin extends HttpServlet {
      */
     public PerformLogin() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -96,13 +95,17 @@ public class PerformLogin extends HttpServlet {
 					session.setAttribute("rollNumber", rno);
 					response.sendRedirect("index.jsp");
 				}
+				else {
+					out.write("<div class=\"alert alert-danger\">Username or Password Incorrect!</div>");
+					RequestDispatcher rd = request.getRequestDispatcher("login_page.jsp");
+					rd.include(request, response);
+				}
 			}
 			else {
 				out.write("<div class=\"alert alert-danger\">Username or Password Incorrect!</div>");
 				RequestDispatcher rd = request.getRequestDispatcher("login_page.jsp");
 				rd.include(request, response);
 			}
-			
 		}
 		catch (Exception e) {e.printStackTrace();}
 	}
@@ -111,7 +114,6 @@ public class PerformLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
