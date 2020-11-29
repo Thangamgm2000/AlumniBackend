@@ -3,7 +3,7 @@ package ServletPackage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
-
+import Model.InitializeImage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -117,9 +117,14 @@ public class PerformRegister extends HttpServlet {
                 ps.setString(8, request.getParameter("RollNumber"));
 
                 ps.executeUpdate();
-
+                String profilePicUrl =InitializeImage.uploadImage(request.getParameter("RollNumber"), request.getServletContext().getRealPath("img/profile.jpg"));
                 PrintWriter out = response.getWriter();
-
+                sql = "insert into social_media(RollNumber,profile_pic)"
+                +" values (?,?)";
+                ps = con.prepareStatement(sql);
+                ps.setString(1, request.getParameter("RollNumber"));
+                ps.setString(2,profilePicUrl);
+                ps.executeUpdate();
                 out.write("<div class=\"alert alert-success\">Registered Successfully, Please Login</div>");
                 RequestDispatcher rd = request.getRequestDispatcher("login_page.jsp");
                 rd.include(request, response);

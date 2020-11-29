@@ -41,6 +41,7 @@ public class DataConnector {
 	            u.setCity(rs.getString("City"));
 				u.setShortBio(rs.getString("ShortBio"));
 				u.setCourseEnrolled(rs.getString("CourseEnrolled"));
+				if(rs.getString("CGPA")!=null)
 				u.setCgpa(Float.parseFloat(rs.getString("CGPA")));
 				u.setAcademicAdvisor(rs.getString("AcademicAdvisor"));
 				u.setAcademicBatch(rs.getString("AdacemicBatch"));
@@ -83,8 +84,24 @@ public class DataConnector {
 				jobs.add(job);
 			}
 			u.setJobs(jobs);
-
-			  
+			ps=con.prepareStatement("select * from social_media where "
+	        		+ "RollNumber=?");  
+			ps.setString(1, rollNumber);
+			rs = ps.executeQuery();
+			while(rs.next())
+			{
+				u.setLinkedin(rs.getString("linkedin"));
+				u.setTwitter(rs.getString("twitter"));
+				u.setFacebook(rs.getString("facebook"));
+				u.setInstagram(rs.getString("instagram"));
+				u.setReddit(rs.getString("reddit"));
+				u.setSlack(rs.getString("slack"));
+				u.setWebsiteLink(rs.getString("website_link"));
+				u.setProfilePic(rs.getString("profile_pic"));
+				
+				
+			}
+			
 	    }catch(Exception e){System.out.println(e);}  
 	    return u;  
 	}
@@ -109,7 +126,19 @@ public class DataConnector {
 			ps.setString(11,u.getAcademicBatch());
 			ps.setString(12, u.getDept());
 			ps.setString(13, u.getRollNumber());
-			status=ps.executeUpdate();  
+			status=ps.executeUpdate();
+			con= connect();  
+			ps=con.prepareStatement(  
+		"update social_media set linkedin=?,facebook=?,instagram=?,reddit=?,slack=?,website_link=?"+
+		" where RollNumber=?");  
+			ps.setString(1,u.getLinkedin());  
+			ps.setString(2,u.getFacebook());  
+			ps.setString(3,u.getInstagram());  
+			ps.setString(4,u.getReddit());
+			ps.setString(5,u.getSlack());  
+			ps.setString(6,u.getWebsiteLink());
+			ps.setString(7, u.getRollNumber());
+			status=ps.executeUpdate();    
 		}catch(Exception e){System.out.println(e);}  
 		return status;  
 	}    

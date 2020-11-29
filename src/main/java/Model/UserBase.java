@@ -3,7 +3,8 @@ import java.util.ArrayList;
 public class UserBase {
 
 	String rollNumber,firstName,lastName,mobileNumber,officialEmail,personalEmail,
-	city,shortBio,courseEnrolled,academicBatch,dept,academicAdvisor;
+	city,shortBio,courseEnrolled,academicBatch,dept,academicAdvisor,
+	linkedin,twitter,facebook,instagram,reddit,slack,websiteLink,profilePic;
 	float cgpa;
 	ArrayList<AchievementsBase> achievements;
 	ArrayList<JobsBase> jobs;
@@ -11,7 +12,8 @@ public class UserBase {
 	{
 		rollNumber = "";firstName="";lastName="";mobileNumber="";officialEmail="";
 		personalEmail="";city="";shortBio="";courseEnrolled="";academicBatch="";dept="";
-		academicAdvisor="";
+		academicAdvisor=""; linkedin="";twitter="";facebook="";instagram="";
+		reddit="";slack="";websiteLink="";profilePic="";
 		cgpa=-1;
 		achievements = new ArrayList<AchievementsBase>();
 		jobs = new ArrayList<JobsBase>();
@@ -106,5 +108,69 @@ public class UserBase {
 	}
 	public void setCgpa(float cgpa) {
 		this.cgpa = cgpa;
+	}
+
+	public String getLinkedin() {
+		return linkedin;
+	}
+
+	public void setLinkedin(String linkedin) {
+		this.linkedin = linkedin;
+	}
+
+	public String getTwitter() {
+		return twitter;
+	}
+
+	public void setTwitter(String twitter) {
+		this.twitter = twitter;
+	}
+
+	public String getFacebook() {
+		return facebook;
+	}
+
+	public void setFacebook(String facebook) {
+		this.facebook = facebook;
+	}
+
+	public String getInstagram() {
+		return instagram;
+	}
+
+	public void setInstagram(String instagram) {
+		this.instagram = instagram;
+	}
+
+	public String getReddit() {
+		return reddit;
+	}
+
+	public void setReddit(String reddit) {
+		this.reddit = reddit;
+	}
+
+	public String getSlack() {
+		return slack;
+	}
+
+	public void setSlack(String slack) {
+		this.slack = slack;
+	}
+
+	public String getWebsiteLink() {
+		return websiteLink;
+	}
+
+	public void setWebsiteLink(String websiteLink) {
+		this.websiteLink = websiteLink;
+	}
+
+	public String getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
 	}
 }

@@ -26,6 +26,13 @@ $(document).ready(function() {
         return queryString
     }
 
+    var makeReadOnly = function()
+    {
+        $('button').hide();
+        $('button[name ="gobackButton"]').show();
+        $("#imageForm").hide();
+    }
+
     var validateUser = function()
     {
         if (sessionStorage.getItem('rollno') == null)
@@ -52,7 +59,7 @@ $(document).ready(function() {
     var cancelButtons = $('button[name ="cancel-button"]');
     $('#imageForm').ajaxForm({
         success: function(msg) {
-            alert("File has been uploaded successfully");
+            $("#upload-error").text("File has been uploaded successfully");
         },
         error: function(msg) {
             $("#upload-error").text("Couldn't upload file");

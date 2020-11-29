@@ -34,6 +34,7 @@ public class ProfileServe extends HttpServlet {
 			String rollNumber=(String)session.getAttribute("rollNumber");
 			UserBase u=DataConnector.getRecordById(rollNumber);
 			session.setAttribute("userLogged",u);
+			session.setAttribute("writeAccess","true");
 			RequestDispatcher rd = request.getRequestDispatcher("Profile.jsp");
         	rd.forward(request, response);
             }  

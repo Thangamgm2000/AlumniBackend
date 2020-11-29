@@ -71,6 +71,7 @@
   <body>
   <%@ page import= "Model.DataConnector,Model.UserBase,java.util.List,Model.AchievementsBase,Model.JobsBase" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+  
 	<%--  
 	String rollNumber = "CB.EN.P2EIE14258";
   UserBase u=DataConnector.getRecordById(rollNumber);
@@ -82,7 +83,7 @@
   request.setAttribute("jobs",jobs);
 	--%>
     <div>
-      <button class="btn btn-warning btn-lg" style="margin: 15px;" onclick="window.history.back()">
+      <button name = "gobackButton" class="btn btn-warning btn-lg" style="margin: 15px;" onclick="window.history.back()">
         Go Back
       </button>
       <br/>
@@ -96,22 +97,41 @@
     <div class="row">
       <div class="col-sm-3">
         <div class="text-center">
-          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+          <img src="${userLogged.getProfilePic()}" class="avatar img-circle img-thumbnail" alt="avatar">
           <h6>Update your profile picture</h6>
           <form action="/ImageHandler" method="post" enctype="multipart/form-data" id="imageForm">
           <input type="file" name="imageFile" class="text-center center-block file-upload">
-          <span id="upload-error" class="error"></span>
+          <span id="upload-error" class=".text-success"></span>
           </form>
         </div>
         </hr><br>
         <div class="panel panel-default">
           <div class="panel-heading">Website/ Social media/ Linkedin </div>
-          <div class="panel-body"><a href="Aboutus.jsp"> ${userLogged.getFirstName()}'s profile</a></div>
+          <c:if test='${userLogged.getWebsiteLink()!=null}'>
+          <div class="panel-body"><a href="${userLogged.getWebsiteLink()}"> ${userLogged.getFirstName()}'s profile</a></div>
+          </c:if>
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">Social Media</div>
           <div class="panel-body">
-            <a href='#' class="fa fa-facebook-f"></a><a href='#' class="fa fa-twitter"></a> <a href='#' class="fa fa-linkedin"></a> <a href='#' class="fa fa-instagram"></a> <a href='#' class="fa fa-reddit"> <a href='#' class="fa fa-slack"></a>
+            <c:if test='${userLogged.getFacebook()!=null}'>
+            <a href='${userLogged.getFacebook()}' class="fa fa-facebook-f"></a>
+            </c:if>
+            <c:if test='${userLogged.getTwitter()!=null}'>
+            <a href='${userLogged.getTwitter()}' class="fa fa-twitter"></a> 
+            </c:if>
+            <c:if test='${userLogged.getLinkedin()!=null}'>
+            <a href='${userLogged.getLinkedin()}' class="fa fa-linkedin"></a>
+            </c:if>
+            <c:if test='${userLogged.getInstagram()!=null}'>
+            <a href='${userLogged.getInstagram()}' class="fa fa-instagram"></a>
+            </c:if>
+            <c:if test='${userLogged.getReddit()!=null}'>
+             <a href='${userLogged.getReddit()}' class="fa fa-reddit"></a>
+             </c:if>
+             <c:if test='${userLogged.getSlack()!=null}'>
+              <a href='${userLogged.getSlack()}' class="fa fa-slack"></a>
+              </c:if>
           </div>
         </div>
       </div>
@@ -441,53 +461,53 @@
           <div class="tab-pane" id="social_media">
             <h2></h2>
             
-            <form class="form" action="##" method="post" id="registrationForm">
+            <form class="form" action="ProfileFormHandler.jsp" method="post" id="registrationForm">
               <div class="form-group">
                 <div class="col-xs-6">
-                  <label for="course">
+                  <label for="linkedin">
                     <h4>Linkedin</h4>
                   </label>
-                  <input type="text" class="form-control" name="course" id="course" placeholder="linkedin.com/abc">
+                  <input type="text" class="form-control" name="linkedin" id="linkedin" placeholder="linkedin.com/abc" value="${userLogged.getLinkedin()}">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-6">
-                  <label for="Batch">
+                  <label for="twitter">
                     <h4>Twitter</h4>
                   </label>
-                  <input type="text" class="form-control" name="batch" id="batch" placeholder="twitter.com/user" >
+                  <input type="text" class="form-control" name="twitter" id="twitter" placeholder="twitter.com/user" value="${userLogged.getTwitter()}" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-6">
-                  <label for="Department">
+                  <label for="facebook">
                     <h4>Facebook</h4>
                   </label>
-                  <input type="text" class="form-control" name="dept_name" id="dept_name" placeholder="facebook username">
+                  <input type="text" class="form-control" name="facebook" id="facebook" placeholder="facebook username" value="${userLogged.getFacebook()}">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-6">
-                  <label for="roll_number">
+                  <label for="instagram">
                     <h4>Instagram</h4>
                   </label>
-                  <input type="text" class="form-control" name="roll_no" id="roll_no" placeholder="Instagram handle" >
+                  <input type="text" class="form-control" name="instagram" id="instagram" placeholder="Instagram handle" value="${userLogged.getInstagram()}" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-6">
-                  <label for="advisor">
+                  <label for="reddit">
                     <h4>Reddit</h4>
                   </label>
-                  <input type="text" class="form-control" name="advisor" id="advisor" placeholder="reddit profile">
+                  <input type="text" class="form-control" name="reddit" id="reddit" placeholder="reddit profile" value="${userLogged.getReddit()}">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-6">
-                  <label for="cgpa">
+                  <label for="slack">
                     <h4>Slack</h4>
                   </label>
-                  <input type="text" class="form-control" id="cgpa" placeholder="Slack username" title="enter a location">
+                  <input type="text" class="form-control" name="slack" id="slack" placeholder="Slack username" value="${userLogged.getSlack()}">
                 </div>
               </div>
               <div class="form-group">
@@ -510,5 +530,12 @@
       <!--/col-9-->
     </div>
     <!--/row-->
+    <c:if test='${writeAccess!="true"}'>
+    <script type="text/javascript">
+        $('button').hide();
+        $('button[name ="gobackButton"]').show();
+        $("#imageForm").hide();
+    </script>
+    </c:if>
   </body>
 </html>
