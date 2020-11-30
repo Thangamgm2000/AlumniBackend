@@ -101,7 +101,7 @@
           <h6>Update your profile picture</h6>
           <form action="/ImageHandler" method="post" enctype="multipart/form-data" id="imageForm">
           <input type="file" name="imageFile" class="text-center center-block file-upload">
-          <span id="upload-error" class=".text-success"></span>
+          <span id="upload-error" class="text-success"></span>
           </form>
         </div>
         </hr><br>
@@ -366,7 +366,8 @@
                         <div class="col-xs-12">
                           <br>
                           <button type="button" class="btn btn-lg btn-primary" id="edit-button" name="edit-button"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
-                          <button class="btn btn-lg btn-success pull-right" type="submit" name="edit-button"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                          <button class="btn btn-lg btn-success pull-right" type="submit" name="save-button"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                          <button class="btn btn-lg btn-danger" type="button" id="cancel-button" name="cancel-button"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
                           <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
                         </div>
                       </div>
@@ -383,15 +384,38 @@
             <h2>Work experience</h2>
             <button type="button" id="add-career" class="btn btn-info btn-lg" data-toggle="modal" data-target="#careerModal">Add a position</button>
             <font color="black">
+            <script>
+            $('#add-career').on('click',function(){
+            $('input[name="roleName"]').val('');
+            $('input[name="jobId"]').val('new');
+            $('input[name="roleType"]').val('');
+            $('input[name="organization"]').val('');
+            $('input[name="startMonth"]').val('');
+            $('input[name="endMonth"]').val('');
+            $('textarea[name="description"]').val('');
+            });
+            </script>
             <c:forEach items="${userLogged.jobs}" var="job">
-            <div class="panel panel-info pannel_style" data-href='#careerModal' id='achievement-pannel'>
+            <div class="panel panel-info pannel_style" data-href='#careerModal' id='careerPannel${job.getJobId()}'>
               <div class="panel-heading">${job.getRoleName()}</div>
               <div class="panel-body">
                 <a href='https://about.google/?utm_source=google-IN&utm_medium=referral&utm_campaign=hp-footer&fg=1'>${job.getOrganization()}</a><br/>
                 ${job.getStartMonth()} -  ${job.getEndMonth()}
               </div>
             </div>
+            <script>
+            $('#careerPannel${job.getJobId()}').on('click',function(){
+            $('input[name="roleName"]').val('${job.getRoleName()}');
+            $('input[name="jobId"]').val('${job.getJobId()}');
+            $('input[name="roleType"]').val('${job.getRoleType()}');
+            $('input[name="organization"]').val('${job.getOrganization()}');
+            $('input[name="startMonth"]').val('${job.getStartMonth()}');
+            $('input[name="endMonth"]').val('${job.getEndMonth()}');
+            $('textarea[name="description"]').val('${job.getDescription()}');
+            });
+            </script>
             </c:forEach>
+            
             
             <div class="modal fade" id="careerModal" role="dialog">
               <div class="modal-dialog">
@@ -401,13 +425,14 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Work details</h4>
                   </div>
-                  <form class="form" action="##" method="post" id="registrationForm">
+                  <form class="form" action="JobsFormHandler.jsp" method="post" id="registrationForm">
+                  <input type="hidden" name="jobId" value='new'/>
                     <div class="form-group">
                       <div class="col-xs-6">
-                        <label for="job_name">
+                        <label for="roleName">
                           <h4>Name of the Job</h4>
                         </label>
-                        <input type="text" class="form-control" name="job_name" id="job_name" placeholder="eg. Front end developer">
+                        <input type="text" class="form-control" name="roleName" id="job_name" placeholder="eg. Front end developer">
                       </div>
                     </div>
                     <div class="form-group">
@@ -420,34 +445,43 @@
                     </div>
                     <div class="form-group">
                       <div class="col-xs-6">
-                        <label for="work_date">
-                          <h4>Duration of work</h4>
+                        <label for="startMonth">
+                          <h4>Start Month of work</h4>
                         </label>
-                        <input type="text" class="form-control" name="work_date" id="work_date" placeholder="eg. March 2017 to Present">
+                        <input type="text" class="form-control" name="startMonth" id="work_date" placeholder="eg. March 2017">
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-xs-6">
-                        <label for="work_type">
+                        <label for="endMonth">
+                          <h4>End Month of Work</h4>
+                        </label>
+                        <input type="text" class="form-control" name="endMonth" id="work_date" placeholder="eg. March 2017 or present">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-xs-6">
+                        <label for="roleType">
                           <h4>Type of work</h4>
                         </label>
-                        <input type="text" class="form-control" name="work_type" id="work_type" placeholder="Internship/ Full time/ FYC" >
+                        <input type="text" class="form-control" name="roleType" id="work_type" placeholder="Internship/ Full time/ FYC" >
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-xs-12">
-                        <label for="work_desc">
+                        <label for="description">
                           <h4>Description</h4>
                         </label>
-                        <textarea class="form-control text_area_style" rows="4" name="work_desc" id="work_desc"></textarea>
+                        <textarea class="form-control text_area_style" rows="4" name="description" id="work_desc"></textarea>
                       </div>
                     </div>
                     <div class="modal-footer">
                       <div class="form-group">
                         <div class="col-xs-12">
                           <br>
-                          <button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                          <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
+                          <button type="button" class="btn btn-lg btn-primary" id="edit-button" name="edit-button"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+                          <button class="btn btn-lg btn-success pull-right" type="submit" name="save-button"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                          <button class="btn btn-lg btn-danger" type="button" id="cancel-button" name="cancel-button"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
                         </div>
                       </div>
                     </div>

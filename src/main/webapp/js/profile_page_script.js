@@ -90,6 +90,7 @@ $(document).ready(function() {
     jQuery.validator.addMethod("properbatch", function(value, element) {
         return this.optional(element) || /[2][0]\d{2}-[2][0]\d{2}/.test(value);
     }, "* Amount must be greater than zero");
+    
 
     $("#academicForm").validate({
         // Specify validation rules

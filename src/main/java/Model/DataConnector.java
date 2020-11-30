@@ -127,7 +127,7 @@ public class DataConnector {
 			ps.setString(12, u.getDept());
 			ps.setString(13, u.getRollNumber());
 			status=ps.executeUpdate();
-			con= connect();  
+			 
 			ps=con.prepareStatement(  
 		"update social_media set linkedin=?,facebook=?,instagram=?,reddit=?,slack=?,website_link=?"+
 		" where RollNumber=?");  
@@ -141,6 +141,43 @@ public class DataConnector {
 			status=ps.executeUpdate();    
 		}catch(Exception e){System.out.println(e);}  
 		return status;  
-	}    
+	}
+	
+	public static int updateJobs(JobsBase job,String rollNumber)
+	{
+		int status=0;
+		
+		try{  
+				Connection con= connect();
+				PreparedStatement ps;
+				if(job.getJobId().equals("new"))
+				{
+				job.setJobId(RandomIdGenerator.getRandomNumber());
+				ps = con.prepareStatement(
+					"insert into Jobs(RollNumber,RoleType,RoleName,Organization,StartMonth,EndMonth,"+
+					"Description,JobId)"+
+					" values (?,?,?,?,?,?,?,?)");
+				}
+				else{
+				ps=con.prepareStatement(
+			"update Jobs set RollNumber=?,RoleType=?,RoleName=?,Organization=?,StartMonth=?,EndMonth=?,"+
+			"Description=?"+
+			" where JobId=?");}
+				ps.setString(1,rollNumber);  
+				ps.setString(2,job.getRoleType());
+				ps.setString(3,job.getRoleName());  
+				ps.setString(4,job.getOrganization());  
+				ps.setString(5,job.getStartMonth());  
+				ps.setString(6,job.getEndMonth());
+				ps.setString(7,job.getDescription());
+				ps.setString(8,job.getJobId());
+				
+				status=ps.executeUpdate();
+				
+		}catch(Exception e){System.out.println(e);}  
+			
+		return status;
+	}
+
 	
 }
