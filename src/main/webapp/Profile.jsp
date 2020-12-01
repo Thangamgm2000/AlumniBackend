@@ -287,31 +287,118 @@
           <div class="tab-pane" id="achievements">
             
             <h2>Academic achievements</h2>
-            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal" >Add an Academic achivement</button>
+            <button type="button" id="add-academic-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal" >Add an Academic achivement</button>
+            <script>
+            $('#add-academic-achievement').on('click',function(){
+            $('input[name="name"]').val('');
+            $('input[name="achievementId"]').val('new');
+            $('input[name="link"]').val('');
+            $('input[name="organization"]').val('');
+            $('input[name="dateOfAccomplishment"]').val('');
+            $('input[name="type"]').val('Academic');
+            $('textarea[name="description"]').val('');
+            });
+            </script>
             <font color="black">
             <c:forEach items="${userLogged.achievements}" var="ach">
-            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel'>
+            <c:if test='${ach.getType()=="Academic"}'>
+            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel${ach.getAchievementId()}'>
               <div class="panel-heading">${ach.getName()}</div>
               <div class="panel-body">${ach.getDateOfAccomplishment()}</div>
             </div>
+            </c:if>
             </c:forEach>
             
             </font>
             <h2>Sports and Culturals achievements</h2>
-            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add a Sports/Cultural achivement</button>
+            <button type="button" id="add-sports-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add a Sports/Cultural achivement</button>
+            <script>
+            $('#add-sports-achievement').on('click',function(){
+            $('input[name="name"]').val('');
+            $('input[name="achievementId"]').val('new');
+            $('input[name="link"]').val('');
+            $('input[name="organization"]').val('');
+            $('input[name="dateOfAccomplishment"]').val('');
+            $('input[name="type"]').val('Sports and Cultural');
+            $('textarea[name="description"]').val('');
+            });
+            </script>
             <font color="black">
+            <c:forEach items="${userLogged.achievements}" var="ach">
+            <c:if test='${ach.getType()=="Sports and Cultural"}'>
+            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel${ach.getAchievementId()}'>
+              <div class="panel-heading">${ach.getName()}</div>
+              <div class="panel-body">${ach.getDateOfAccomplishment()}</div>
+            </div>
+            </c:if>
+            </c:forEach>
+            <!--font color="black"-->
             
             </font>
             <h2>Work achievements</h2>
-            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add a Work achivement</button>
+            <button type="button" id="add-work-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add a Work achivement</button>
+            <script>
+            $('#add-work-achievement').on('click',function(){
+            $('input[name="name"]').val('');
+            $('input[name="achievementId"]').val('new');
+            $('input[name="link"]').val('');
+            $('input[name="organization"]').val('');
+            $('input[name="dateOfAccomplishment"]').val('');
+            $('input[name="type"]').val('Work');
+            $('textarea[name="description"]').val('');
+            });
+            </script>
             <font color="black">
+            <c:forEach items="${userLogged.achievements}" var="ach">
+            <c:if test='${ach.getType()=="Work"}'>
+            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel${ach.getAchievementId()}'>
+              <div class="panel-heading">${ach.getName()}</div>
+              <div class="panel-body">${ach.getDateOfAccomplishment()}</div>
+            </div>
+            </c:if>            
+            </c:forEach>
+            <!--font color="black"-->
             
             </font>
             <h2>Other achievements</h2>
+            <button type="button" id="add--other-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add other achivements</button>
+            <script>
+            $('#add-other-achievement').on('click',function(){
+            $('input[name="name"]').val('');
+            $('input[name="achievementId"]').val('new');
+            $('input[name="link"]').val('');
+            $('input[name="organization"]').val('');
+            $('input[name="dateOfAccomplishment"]').val('');
+            $('input[name="type"]').val('Other');
+            $('textarea[name="description"]').val('');
+            });
+            </script>
+            <font color="black">
+
+            <c:forEach items="${userLogged.achievements}" var="ach">
+            <c:if test='${ach.getType()=="Other"}'>
+            <div class="panel panel-info pannel_style" data-href='#achievementModal' id='achievement-pannel${ach.getAchievementId()}'>
+              <div class="panel-heading">${ach.getName()}</div>
+              <div class="panel-body">${ach.getDateOfAccomplishment()}</div>
+            </div>
+            </c:if>
+            <script>
+            $('#achievement-pannel${ach.getAchievementId()}').on('click',function(){
+            $('input[name="name"]').val('${ach.getName()}');
+            $('input[name="achievementId"]').val('${ach.getAchievementId()}');
+            $('input[name="link"]').val('${ach.getLink()}');
+            $('input[name="organization"]').val('${ach.getOrganization()}');
+            $('input[name="dateOfAccomplishment"]').val('${ach.getDateOfAccomplishment()}');
+            $('input[name="type"]').val('${ach.getType()}');
+            $('textarea[name="description"]').val('${ach.getDescription()}');
+            });
+            </script>
             
+            </c:forEach>
+            </font>
               <font color="black">
               
-            <button type="button" id="add-achievement" class="btn btn-info btn-lg" data-toggle="modal" data-target="#achievementModal">Add other achivements</button>
+            
             <div class="modal fade" id="achievementModal" role="dialog">
               <div class="modal-dialog">
                 <!-- Modal content-->
@@ -320,13 +407,15 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Achievement details</h4>
                   </div>
-                  <form class="form" action="##" method="post" id="registrationForm">
+                  <form class="form" action="AchievementsFormHandler.jsp" method="post" id="registrationForm">
+                    <input type="hidden" name="achievementId" value='new'/>
+                    <input type="hidden" name="type" value='Other'/>
                     <div class="form-group">
                       <div class="col-xs-6">
-                        <label for="achievement">
+                        <label for="name">
                           <h4>Name of the achievement</h4>
                         </label>
-                        <input type="text" class="form-control" name="achievement" id="organization" placeholder="eg. Schlorship">
+                        <input type="text" class="form-control" name="name" id="organization" placeholder="eg. Schlorship">
                       </div>
                     </div>
                     <div class="form-group">
@@ -339,26 +428,26 @@
                     </div>
                     <div class="form-group">
                       <div class="col-xs-6">
-                        <label for="award_date">
+                        <label for="dateOfAccomplishmente">
                           <h4>Date of accomplishment</h4>
                         </label>
-                        <input type="text" class="form-control" name="award_date" id="award_date" placeholder="eg. 01/07/2019">
+                        <input type="text" class="form-control" name="dateOfAccomplishment" id="award_date" placeholder="eg. 01/07/2019">
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-xs-6">
-                        <label for="achiv_link">
+                        <label for="link">
                           <h4>Link if available</h4>
                         </label>
-                        <input type="text" class="form-control" name="achiv_link" id="achiv_link" placeholder="eg. coursera.org/accomplishment" >
+                        <input type="text" class="form-control" name="link" id="achiv_link" placeholder="eg. coursera.org/accomplishment" >
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-xs-12">
-                        <label for="ach_desc">
+                        <label for="description">
                           <h4>Description</h4>
                         </label>
-                        <textarea class="form-control text_area_style" rows="4" name="ach_desc" id="ach_desc"></textarea>
+                        <textarea class="form-control text_area_style" rows="4" name="description" id="ach_desc"></textarea>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -569,6 +658,7 @@
         $('button').hide();
         $('button[name ="gobackButton"]').show();
         $("#imageForm").hide();
+        $('button.close').show();
     </script>
     </c:if>
   </body>

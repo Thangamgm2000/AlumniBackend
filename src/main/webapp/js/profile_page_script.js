@@ -79,6 +79,10 @@ $(document).ready(function() {
       saveButtons.click(function(){
         $(':input').prop("readonly", false);
       });
+      cancelButtons.click(function()
+      {
+        window.location.replace("/ProfileServe");
+      });
     
     $(".file-upload").on('change', function(){
         readURL(this);

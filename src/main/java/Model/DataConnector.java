@@ -179,5 +179,41 @@ public class DataConnector {
 		return status;
 	}
 
+	public static int updateAchievements(AchievementsBase ach, String rollNumber)
+	{
+		int status=0;
+		
+		try{  
+				Connection con= connect();
+				PreparedStatement ps;
+				if(ach.getAchievementId().equals("new"))
+				{
+				ach.setAchievementId(RandomIdGenerator.getRandomNumber());
+				ps = con.prepareStatement(
+					"insert into Achievements(RollNumber,Type,Name,Organization,DateOfAccomplishment,Link,"+
+					"Description,AchievementId)"+
+					" values (?,?,?,?,?,?,?,?)");
+				}
+				else{
+				ps=con.prepareStatement(
+			"update Achievements set RollNumber=?,Type=?,Name=?,Organization=?,DateOfAccomplishment=?,Link=?,"+
+			"Description=?"+
+			" where AchievementId=?");}
+				ps.setString(1,rollNumber);  
+				ps.setString(2,ach.getType());
+				ps.setString(3,ach.getName());  
+				ps.setString(4,ach.getOrganization());  
+				ps.setString(5,ach.getDateOfAccomplishment());  
+				ps.setString(6,ach.getLink());
+				ps.setString(7,ach.getDescription());
+				ps.setString(8,ach.getAchievementId());
+				
+				status=ps.executeUpdate();
+				
+		}catch(Exception e){System.out.println(e);}  
+			
+		return status;
+	}
+
 	
 }
