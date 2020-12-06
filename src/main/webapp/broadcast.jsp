@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ page import="Model.BroadcastBase,java.util.ArrayList" %>
+
+<%
+	session.setAttribute("broadcasts",BroadcastBase.getBroadcasts());
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,76 +100,76 @@
 	<script type="text/javascript">
 		function sendMessage()
 		{
+			var rno = document.getElementById("sesRNO").value;
 			var txt = document.getElementById("msg").value;
-			console.log(txt)
+			date = new Date();
+			var time = date.getHours()+":"+date.getMinutes()+" "+date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
+			
 			if (txt !== "")
 			{
-				var htcontent = document.getElementById("mytext1").innerHTML;
-				console.log(htcontent);
-				var newEle = document.createElement("div");
-				newEle.className = "chat mytext";
-				newEle.innerHTML = htcontent;
-				console.log(newEle.childNodes);
-				newEle.childNodes[5].innerHTML = txt;
-				document.getElementById("conversation").appendChild(newEle);
+				var xmlHttp = new XMLHttpRequest();
+    			xmlHttp.onreadystatechange = function() { 
+					if(xmlHttp.status == 200)	location.href = location;
+					else console.log("ERROR!");
+    			}
+    			xmlHttp.open("GET", "/BroadcastMessage?rollNumber="+rno+"&message="+txt+"&time="+time, true); // true for asynchronous 
+    			xmlHttp.send(null);
 			}
 		}
 	</script>
 </head>
 <body>
 	<jsp:include page="navbar.jsp"/>
-    
-    <div id="nav-placeholder"></div>
+	<input type="hidden" id="sesRNO" value=${sessionScope.rollNumber} />
 	<div class="card mx-auto mycard" style="width: 800px;">
-		<div>
+		<div class="conversation" id="conversation">
+
+			<c:forEach items="${broadcasts}" var="b">
+
+				<c:if test="${b.getRollNumber() != rollNumber}">
+					<div class="chat">
+						<span>
+							<i class="fa fa-user-circle fa-2x"></i>
+							<span style="padding-left: 5px;">${b.getRollNumber()}</span>
+						</span>
+						<br/>
+						<br/>
+						<div>${b.getMessage()}</div>
+						<span class="time-r">
+							<p>${b.getTime()}</p>
+						</span>
+						<br/>
+					</div>
+				</c:if>
+
+				<c:if test="${b.getRollNumber() == rollNumber}">
+					<div class="chat mytext" id="mytext1">
+						<span style="float: right;">
+							<span style="padding-right: 5px;">Me</span>
+							<i class="fa fa-user-circle fa-2x"></i>
+						</span>
+						<br/>
+						<br/>
+						<div>${b.getMessage()}</div>
+						<br/>
+						<span class="time-l">
+							<p>${b.getTime()}  <i class="fa fa-check"></i></p>
+						</span>
+						<br/>
+					</div>
+				</c:if>
+
+			</c:forEach>
 
 		</div>
-		<div class="conversation" id="conversation">
-			<div class="chat">
-				<span>
-					<i class="fa fa-user-circle fa-2x"></i>
-					<span style="padding-left: 5px;">Goku</span>
-				</span>
-				<br/>
-				<br/>
-				Anybody up for a meet this week? Potentially Saturday
-				<span class="time-r">
-					<p>10:35</p>
-				</span>
-			</div>
-			<div class="chat">
-				<span>
-					<i class="fa fa-user-circle fa-2x"></i>
-					<span style="padding-left: 5px;">Krillin</span>
-				</span>
-				<br/>
-				<br/>
-				I'll be there yumm!
-				<span class="time-r">
-					<p>10:37</p>
-				</span>
-			</div>
-			<div class="chat mytext" id="mytext1">
-				<span style="float: right;">
-					<span style="padding-right: 5px;">Me</span>
-					<i class="fa fa-user-circle fa-2x"></i>
-				</span>
-				<br/>
-				<div id='message'>Hi there</div>
-				<br/>
-				<span class="time-l">
-					<p>11:19  <i class="fa fa-check"></i></p>
-				</span>
-			</div>
-			<div>
-			</div>
-		</div>
-		<div id="message">
+
+		<div>
 			<textarea placeholder="Remember, be nice!" id="msg"></textarea>
 			<div class="buttondiv">
 				<button class="butn" value="sendMessage" onclick="sendMessage()">Send <i class="fa fa-send"></i></button>
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>
