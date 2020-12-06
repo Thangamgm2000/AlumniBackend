@@ -23,7 +23,7 @@ This project is built and deployed end-to-end in cloud using Amazon Web Services
 You can check out the deployed application [here](http://alumniportalbeanstalk-env.eba-a2zpu2ng.us-east-2.elasticbeanstalk.com/)
 
 
-#### Developers
+### Developers
 1. [R Kailash - CB.EN.U4CSE17123](https://github.com/M4SK3D)
 2. [T Sai Trinadh - CB.EN.U4CSE17129]()
 3. [K Keshavi - CB.EN.U4CSE17130](https://github.com/keshavikongara)
@@ -31,8 +31,8 @@ You can check out the deployed application [here](http://alumniportalbeanstalk-e
 5. [Sreeramji K S - CB.EN.U4CSE17153](https://github.com/jam1729)
 6. [Thanga Manickam M - CB.EN.U4CSE17161](https://github.com/Thangamgm2000)
 
-#### Architecture Diagram
-![Architecture Diagram](NCPArchitectureDiagram.jpg)
+### Architecture Diagram
+![Architecture Diagram](https://s3.us-east-2.amazonaws.com/amrita-alumni-portal.io/NCPArchitecturediagram.jpg)
 
 ### Technology Stack and Environment used
 The following tools and services are used in this project.
@@ -66,7 +66,7 @@ To reduce the time on integration and deployment, we have used Continous Integra
 
 We have used AWS S3 to store profile pictures and build articrafts. We have also used AWS Simple Email Service (SES) to send automated emails when user fills the query form.
 
-#### Directory Structure
+### Directory Structure
 * Package Model: All helper java classes
 * Package ServletPackage: All the servlets used in application
 * pom.xml: Maven Dependencies and packaging
