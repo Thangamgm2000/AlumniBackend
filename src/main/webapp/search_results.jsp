@@ -1,17 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<%@ page import="Model.SearchBase,Model.PerformSearch,java.util.ArrayList" %>
-
-<jsp:useBean id="searchObj" class="Model.SearchBase"></jsp:useBean>
-<jsp:setProperty property="*" name="searchObj" />
-
-<% 
-	ArrayList<SearchBase> searchResults = PerformSearch.dbSearch(searchObj);
-	session.setAttribute("searchResults", searchResults);
-%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%
+	session.setAttribute("searchResults",request.getAttribute("searchResults"));
+%>
 
 
 <!DOCTYPE html>

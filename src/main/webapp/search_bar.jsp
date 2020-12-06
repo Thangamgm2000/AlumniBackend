@@ -24,7 +24,7 @@
 	<div id="nav-placeholder"></div>
 	<div class="card mx-auto mycard" style="width:800px;">
 		<h4 class="card-header" style="border-bottom: 2px solid black">Search</h4>
-		<form action="search_results.jsp" method="POST">
+		<form action="/HandleSearch" method="POST">
 			<div class="card-body">
 				<p class="card-text">
 					Add additional search criteria with the <i class="fa fa-plus"></i> icon
