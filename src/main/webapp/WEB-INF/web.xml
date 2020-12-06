@@ -5,6 +5,6 @@
          id="WebApp_ID" version="3.0">
   <display-name>Archetype Created Web Application</display-name>
   <session-config>
-    <session-timeout>5</session-timeout>
+    <session-timeout>15</session-timeout>
   </session-config>
 </web-app>

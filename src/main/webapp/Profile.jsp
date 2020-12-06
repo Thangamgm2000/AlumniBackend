@@ -98,8 +98,9 @@
       <div class="col-sm-3">
         <div class="text-center">
           <img src="${userLogged.getProfilePic()}" class="avatar img-circle img-thumbnail" alt="avatar">
-          <h6>Update your profile picture</h6>
+          
           <form action="/ImageHandler" method="post" enctype="multipart/form-data" id="imageForm">
+          <h6>Update your profile picture</h6>
           <input type="file" name="imageFile" class="text-center center-block file-upload">
           <span id="upload-error" class="text-success"></span>
           </form>
@@ -431,7 +432,7 @@
                         <label for="dateOfAccomplishmente">
                           <h4>Date of accomplishment</h4>
                         </label>
-                        <input type="text" class="form-control" name="dateOfAccomplishment" id="award_date" placeholder="eg. 01/07/2019">
+                        <input type="text" class="form-control" name="dateOfAccomplishment" id="award_date" placeholder="YYYY-MM-DD">
                       </div>
                     </div>
                     <div class="form-group">
@@ -537,7 +538,7 @@
                         <label for="startMonth">
                           <h4>Start Month of work</h4>
                         </label>
-                        <input type="text" class="form-control" name="startMonth" id="work_date" placeholder="eg. March 2017">
+                        <input type="text" class="form-control" name="startMonth" id="work_date" placeholder="YYYY-MM">
                       </div>
                     </div>
                     <div class="form-group">
@@ -545,7 +546,7 @@
                         <label for="endMonth">
                           <h4>End Month of Work</h4>
                         </label>
-                        <input type="text" class="form-control" name="endMonth" id="work_date" placeholder="eg. March 2017 or present">
+                        <input type="text" class="form-control" name="endMonth" id="work_date" placeholder="YYYY-MM or present">
                       </div>
                     </div>
                     <div class="form-group">
@@ -590,7 +591,7 @@
                   <label for="linkedin">
                     <h4>Linkedin</h4>
                   </label>
-                  <input type="text" class="form-control" name="linkedin" id="linkedin" placeholder="linkedin.com/abc" value="${userLogged.getLinkedin()}">
+                  <input type="text" class="form-control" name="linkedin" id="linkedin" placeholder="https://linkedin.com/abc" value="${userLogged.getLinkedin()}">
                 </div>
               </div>
               <div class="form-group">
@@ -598,7 +599,7 @@
                   <label for="twitter">
                     <h4>Twitter</h4>
                   </label>
-                  <input type="text" class="form-control" name="twitter" id="twitter" placeholder="twitter.com/user" value="${userLogged.getTwitter()}" >
+                  <input type="text" class="form-control" name="twitter" id="twitter" placeholder="https://twitter.com/user" value="${userLogged.getTwitter()}" >
                 </div>
               </div>
               <div class="form-group">
@@ -606,7 +607,7 @@
                   <label for="facebook">
                     <h4>Facebook</h4>
                   </label>
-                  <input type="text" class="form-control" name="facebook" id="facebook" placeholder="facebook username" value="${userLogged.getFacebook()}">
+                  <input type="text" class="form-control" name="facebook" id="facebook" placeholder="https://facebook.com/username" value="${userLogged.getFacebook()}">
                 </div>
               </div>
               <div class="form-group">
@@ -614,7 +615,7 @@
                   <label for="instagram">
                     <h4>Instagram</h4>
                   </label>
-                  <input type="text" class="form-control" name="instagram" id="instagram" placeholder="Instagram handle" value="${userLogged.getInstagram()}" >
+                  <input type="text" class="form-control" name="instagram" id="instagram" placeholder="https://instagram.com/Instagramhandle" value="${userLogged.getInstagram()}" >
                 </div>
               </div>
               <div class="form-group">
@@ -622,7 +623,7 @@
                   <label for="reddit">
                     <h4>Reddit</h4>
                   </label>
-                  <input type="text" class="form-control" name="reddit" id="reddit" placeholder="reddit profile" value="${userLogged.getReddit()}">
+                  <input type="text" class="form-control" name="reddit" id="reddit" placeholder="https://reddit.com/redditProfile" value="${userLogged.getReddit()}">
                 </div>
               </div>
               <div class="form-group">
@@ -630,7 +631,7 @@
                   <label for="slack">
                     <h4>Slack</h4>
                   </label>
-                  <input type="text" class="form-control" name="slack" id="slack" placeholder="Slack username" value="${userLogged.getSlack()}">
+                  <input type="text" class="form-control" name="slack" id="slack" placeholder="https://slack.com/username" value="${userLogged.getSlack()}">
                 </div>
               </div>
               <div class="form-group">
