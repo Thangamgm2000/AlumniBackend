@@ -87,7 +87,7 @@ public class ImageHandler extends HttpServlet {
 			response.setContentType("text/html");
 	        PrintWriter out = response.getWriter(); 
             // Getting File data
-            String bucket_name = "amrita-alumni-portal.io";
+            String bucket_name = "YOUR-BUCKET-NAME";
             Part part = request.getPart("imageFile");
             InstanceProfileCredentialsProvider credentialsProvider = new InstanceProfileCredentialsProvider();
             try {

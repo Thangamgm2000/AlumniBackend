@@ -14,7 +14,7 @@ import com.amazonaws.services.simpleemail.model.SendEmailRequest;
 
 public class SimpleEmailServiceAPI
 {
-    static final String FROM = "cb.en.u4cse17161@cb.students.amrita.edu";  // Replace with your "From" address. This address must be verified.
+    static final String FROM = "Your Email Id";  // Replace with your "From" address. This address must be verified.
     static final String SUBJECT = "Query Received from Alumni Portal";
 
     public static String sendMessage(String TO, String name, String bodyMessage) throws IOException
@@ -39,14 +39,7 @@ public class SimpleEmailServiceAPI
         try {
             //System.out.println("Attempting to send an email through Amazon SES by using the AWS SDK for Java...");
 
-            /*
-             * The ProfileCredentialsProvider will return your [default]
-             * credential profile by reading from the credentials file located at
-             * (C:\\Users\\hp\\.aws\\credentials).
-             *
-             * TransferManager manages a pool of threads, so we create a
-             * single instance and share it throughout our application.
-             */
+            
             InstanceProfileCredentialsProvider credentialsProvider = new InstanceProfileCredentialsProvider();
             try {
                 credentialsProvider.getCredentials();

@@ -1,4 +1,4 @@
-# Amrita Alumni Portal Website
+# A cloud based alumni portal website using JSP with Continous Integration.
 
 ### Table of Contents
 * [About this project](#about-this-project)
@@ -17,32 +17,31 @@
 
 
 ### About this project:
-This project is part of NetCentric Programming Academic course. We have built a sample web application for Alumni portal using Java Servlets, JSP, Java Beans, html, css, js. Industry practices and standards are followed in both development and deployment.
+We have built a sample web application for Alumni portal using Java Servlets, JSP, Java Beans, html, css, js. Industry practices and standards are followed in both development and deployment.
 
-This project is built and deployed end-to-end in cloud using Amazon Web Services.
-You can check out the deployed application [here](http://alumniportalbeanstalk-env.eba-a2zpu2ng.us-east-2.elasticbeanstalk.com/)
+This project is built and deployed end-to-end in cloud using Amazon Web Services. Proper continous integration and continous deivery techniques are followed.
+
 
 
 ### Developers
-1. [R Kailash - CB.EN.U4CSE17123](https://github.com/M4SK3D)
-2. [T Sai Trinadh - CB.EN.U4CSE17129]()
-3. [K Keshavi - CB.EN.U4CSE17130](https://github.com/keshavikongara)
-4. [S Prathiba - CB.EN.U4CSE17141](https://github.com/prathiba0311)
-5. [Sreeramji K S - CB.EN.U4CSE17153](https://github.com/jam1729)
-6. [Thanga Manickam M - CB.EN.U4CSE17161](https://github.com/Thangamgm2000)
+1. [Thanga Manickam M - CB.EN.U4CSE17161](https://github.com/Thangamgm2000)
+2. [R Kailash - CB.EN.U4CSE17123](https://github.com/M4SK3D)
+3. [S Prathiba - CB.EN.U4CSE17141](https://github.com/prathiba0311)
+4. [Sreeramji K S - CB.EN.U4CSE17153](https://github.com/jam1729)
+
 
 ### Architecture Diagram
-![Architecture Diagram](https://s3.us-east-2.amazonaws.com/amrita-alumni-portal.io/NCPArchitecturediagram.jpg)
+![Architecture Diagram](NCPArchitecturediagram.jpg)
 
 ### Technology Stack and Environment used
 The following tools and services are used in this project.
 
 #### Frontend
-Java Server Pages, CSS, java script are used to render frontend page from serverside. Form validations are done using js as client side scripting. Bootstrap is used as primary CSS framework.
+Html, CSS, java script are used to render frontend page from serverside. Form validations are done using js as client side scripting. Bootstrap is used as primary CSS framework.
 JSTL (JavaServer Pages Standard Tag Library) and EL (Expression Language) are used to improve the usability and readability of JSP code.
 
 #### Backend
-The application is end to end server side scripted using Java servlets. The server is deployed in an Apache Tomcat 8.5 server which renders the dynamic JSP pages. Communication between pages is carried out using Java Beans classes.
+The application is end to end server side scripted using Java servlets and Java Server Pages (JSP). The server is deployed in an Apache Tomcat 8.5 server which renders the dynamic JSP pages. Communication between pages is carried out using Java Beans classes.
 
 #### Environment
 * **SDK** : Java Correto 11
@@ -67,9 +66,15 @@ To reduce the time on integration and deployment, we have used Continous Integra
 We have used AWS S3 to store profile pictures and build articrafts. We have also used AWS Simple Email Service (SES) to send automated emails when user fills the query form.
 
 ### Directory Structure
-* Package Model: All helper java classes
-* Package ServletPackage: All the servlets used in application
+* src\main\java\Model: All helper java classes
+* src\main\java\ServletPackage: All the servlets used in application
 * pom.xml: Maven Dependencies and packaging
-* web.xml: Server versioning, configuration and session properties
-* webapp: Jsp, Css, js, static images
+* src\main\webapp\WEB-INF\web.xml: Server version, configuration and session properties
+* buildspec.yml: Contains the codebuild instructions.
+* src\main\webapp: Jsp, Css, js, static images
 
+### AWS References
+* https://docs.aws.amazon.com/codebuild/latest/userguide/sample-elastic-beanstalk.html#sample-elastic-beanstalk-codepipeline
+* https://docs.aws.amazon.com/rds/index.html
+* https://docs.aws.amazon.com/ses/index.html
+* https://docs.aws.amazon.com/s3/index.html

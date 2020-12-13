@@ -10,9 +10,9 @@ public class PerformSearch {
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver"); 
-			connection = DriverManager.getConnection("jdbc:mysql://ncp-project.c9pmlhgdvlrz.us-east-2.rds.amazonaws.com/AlumniPortal",
-							"alumni",
-							"fromarea51"
+			connection = DriverManager.getConnection("jdbc:mysql://Your-MYSQL-Database-URL",
+							"DatabaseName",
+							"password"
 							);
 		}
 		catch (Exception e)
@@ -25,7 +25,7 @@ public class PerformSearch {
 
     public static String profPicSearch (Connection conn, String rno) {
         
-        String profile_pic = "https://s3.us-east-2.amazonaws.com/amrita-alumni-portal.io/profile.jpg";
+        String profile_pic = "https://s3.us-east-2.amazonaws.com/YOUR-BUCKET-NAME/profile.jpg";
         
         try {
             Connection con = conn;

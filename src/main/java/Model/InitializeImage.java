@@ -13,7 +13,7 @@ import java.io.IOException;
 public class InitializeImage {
     public static String uploadImage(String RollNumber,String ImagePath)
     {
-        String bucket_name = "amrita-alumni-portal.io";
+        String bucket_name = "YOUR-BUCKET-NAME";
           InstanceProfileCredentialsProvider credentialsProvider = new InstanceProfileCredentialsProvider();
             try {
                 credentialsProvider.getCredentials();
@@ -30,6 +30,6 @@ public class InitializeImage {
                     ObjectMetadata metadata = new ObjectMetadata();
                     metadata.setContentType("image/jpg");
                     s3.putObject(s3request);
-            return ("https://s3.us-east-2.amazonaws.com/amrita-alumni-portal.io/"+fileObjKeyName);
+            return ("https://s3.us-east-2.amazonaws.com/YOUR-BUCKET-NAME/"+fileObjKeyName);
     }
 }

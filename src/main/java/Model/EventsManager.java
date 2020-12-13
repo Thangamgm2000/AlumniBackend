@@ -9,9 +9,9 @@ public class EventsManager {
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver"); 
-			connection = DriverManager.getConnection("jdbc:mysql://ncp-project.c9pmlhgdvlrz.us-east-2.rds.amazonaws.com/AlumniPortal",
-							"alumni",
-							"fromarea51"
+			connection = DriverManager.getConnection("jdbc:mysql://Your-MYSQL-Database-URL",
+							"DatabaseName",
+							"password"
 							);
 		}
 		catch (Exception e)

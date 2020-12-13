@@ -29,7 +29,7 @@ public class UploadServlet extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
           // Get the absolute path of the image
-          String bucket_name = "amrita-alumni-portal.io";
+          String bucket_name = "YOUR-BUCKET-NAME";
           InstanceProfileCredentialsProvider credentialsProvider = new InstanceProfileCredentialsProvider();
             try {
                 credentialsProvider.getCredentials();

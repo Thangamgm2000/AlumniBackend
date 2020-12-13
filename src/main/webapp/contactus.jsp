@@ -12,10 +12,10 @@
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/contactus.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWwJvVnAp_L8Byh8GF5o_C1msaOQcRkRw"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=<Your API KEY"></script>
 	<script src="js/contactus.js"></script>
 </head>
-<body onload="genMap()">
+<body>
 <jsp:include page="navbar.jsp"/>
 	<div class="container-contact100">
 		<div class="contact100-map" id="google_map"></div>
